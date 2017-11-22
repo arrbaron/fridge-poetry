@@ -11,13 +11,13 @@ const MOCK_VERSES =
         {
             id: "112",
             text: "um how should i start",
-            author: "haikudude1",
+            author: "haikudude12",
             date: 14700000123
         },
         {
             id: "113",
             text: "so is it like this",
-            author: "haikudude1",
+            author: "haikudude13434",
             date: 14700000123
         }
     ],
@@ -27,19 +27,19 @@ const MOCK_VERSES =
        {
             id: "114",
             text: "haikus are so very great aren't they?",
-            author: "haikudude1",
+            author: "haikudude1434343",
             date: 14700000123
         },
         {
             id: "115",
             text: "you need seven syllables",
-            author: "haikudude1",
+            author: "haikudude11111",
             date: 14700000123
         },
         {
             id: "116",
             text: "it's that simple don't you see",
-            author: "haikudude1",
+            author: "haikudude1231241",
             date: 14700000123
         } 
     ],
@@ -49,19 +49,19 @@ const MOCK_VERSES =
         {
             id: "117",
             text: "you did it well done",
-            author: "haikudude1",
+            author: "haikudude123423423",
             date: 14700000123
         },
         {
             id: "118",
             text: "i am proud of you",
-            author: "haikudude1",
+            author: "haikudude112313",
             date: 14700000123
         },
         {
             id: "119",
             text: "let's celebrate now",
-            author: "haikudude1",
+            author: "haikudude144314",
             date: 14700000123
         }
     ]
@@ -70,24 +70,22 @@ const MOCK_VERSES =
 const App = {
     haikus: [],
     
-    getRecentHaikus: () => {
+    getRecentHaikus: function() {
         setTimeout(() => { callbackFn(MOCK_VERSES)}, 1000);
     },
 
-    createHaiku: (beginning, middle, ending) => {
-        let newHaiku = `
-  
-        ${beginning.text}
-        ${middle.text}
-        ${ending.text}
-        `;
+    createHaiku: function(beginning, middle, ending) {
+        let newHaiku = {
+            beginning: beginning,
+            middle: middle,
+            ending: ending
+        };
 
-        // why doesn't this work? this.haikus.push(newHaiku)
-        App.haikus.push(newHaiku);
+        this.haikus.push(newHaiku);
         return newHaiku;
     },
 
-    getVerse: data => {
+    getVerse: function(data) {
         let randomVerse;
 
         randomVerse = data[Math.floor(Math.random() * data.length)];
@@ -96,8 +94,14 @@ const App = {
 };
 
 const HTMLRenderer = {
-    displayHaikus: data => {
-        console.log(App.haikus);
+    displayHaikus: function(data) {
+        data.forEach((item, index) => {
+            $(".haikus").append(`
+                <p>${item.beginning.text} (${item.beginning.author})</p>
+                <p>${item.middle.text} (${item.middle.author})</p>
+                <p>${item.ending.text} (${item.ending.author})</p>
+            `);
+        });
     }
 };
 
@@ -105,6 +109,5 @@ const EventListeners = {
 
 };
 
-console.log(App.createHaiku(App.getVerse(MOCK_VERSES.beginnings), App.getVerse(MOCK_VERSES.middles), App.getVerse(MOCK_VERSES.endings)));
-
-console.log(App.haikus);
+App.createHaiku(App.getVerse(MOCK_VERSES.beginnings), App.getVerse(MOCK_VERSES.middles), App.getVerse(MOCK_VERSES.endings));
+HTMLRenderer.displayHaikus(App.haikus);
