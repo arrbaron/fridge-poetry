@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: B9phnrdv/3/wA3WZil/G+x55/r0wcu9uhIkj98s+MKQURUV7/AVbi7Zxo9+UOk2aJrmBF1QmgYOqmsp1ACkVdc0G550qcCYu6BP+kjs83y8yLGYK+VnAqis1B6lzLxsf1z1yw1hSyWj9VLjN3LlqqlfngO5mAL0WNjXwABIzAVCNho55cRS3+MhYKX4QnxT9GfN7J+4JRKc2aKVxdGDp00ZyyNyYnnSdNGHmezTO+PFFWKjbUmT0fTUFCi/jMCv08lfzxuqIDmRKfF3YWUbxZFKhncgGPW3TWxU7muJabSPHWJvBrvjo+kxRgF95BP9Pm9Q6Fau18ITC0p43QBPQ6l1GUFjulZcXrENgQWLxImkuZMjHaOftFI7gQJ4zaIi8n7DH7y4a09FQFtW3F/mxz2yuxoRZ9hg8UPgAqSFu/o784wOzmgpOC5LwAozKXaHRYHunBNs9FT/mbBHXSvkXctbBGrlMaPKjNaJkg5y4Gkk3hoxIQdLJElmPf8AsQ7PAiTnhtsGvb9Et9HA2Lp+U6GUt9DmnKY66hUOdeH31FyXzOWoaxg1d+CX6cBauz8wcgq1OhYyrDsHBPDoUPtT7lcmzz7r74KXSuTstgGyhDj4G3xSUpACci9Cn4TKQpUwHWWYpuwwHGN24PUWnFbYBlnQWjDuErR7kiMBd38SN8sY=
+  app: five-seven-five
+  on:
+    repo: soundofsilence75/five-seven-five
