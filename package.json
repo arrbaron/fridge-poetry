@@ -2,10 +2,10 @@
   "name": "five-seven-five",
   "version": "1.0.0",
   "description": "a collaborative haiku writing tool",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node server.js",
-    "test": "mocha"
+    "test": "mocha test/setup.test.js */*.test.js"
   },
   "author": "Roy Baron",
   "license": "ISC",
