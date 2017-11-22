@@ -22,7 +22,7 @@ const MOCK_VERSES =
         }
     ],
     
-    middles: 
+    middles:
     [
        {
             id: "114",
