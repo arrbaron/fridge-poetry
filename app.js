@@ -4,19 +4,19 @@ const MOCK_VERSES =
     [
         {
             id: "111",
-            text: "is this a haiku?",
+            text: "petals fall slowly",
             author: "haikudude1",
             date: 14700000123
         },
         {
             id: "112",
-            text: "um how should i start",
+            text: "becoming much more",
             author: "haikudude12",
             date: 14700000123
         },
         {
             id: "113",
-            text: "so is it like this",
+            text: "and crying we go",
             author: "haikudude13434",
             date: 14700000123
         }
@@ -26,7 +26,7 @@ const MOCK_VERSES =
     [
        {
             id: "114",
-            text: "haikus are so very great aren't they?",
+            text: "nothing matters more or less",
             author: "haikudude1434343",
             date: 14700000123
         },
@@ -38,7 +38,7 @@ const MOCK_VERSES =
         },
         {
             id: "116",
-            text: "it's that simple don't you see",
+            text: "haikus are so confusing",
             author: "haikudude1231241",
             date: 14700000123
         } 
@@ -48,19 +48,19 @@ const MOCK_VERSES =
     [
         {
             id: "117",
-            text: "you did it well done",
+            text: "let's be together",
             author: "haikudude123423423",
             date: 14700000123
         },
         {
             id: "118",
-            text: "i am proud of you",
+            text: "you smell like dandruff",
             author: "haikudude112313",
             date: 14700000123
         },
         {
             id: "119",
-            text: "let's celebrate now",
+            text: "I hear your teardrops",
             author: "haikudude144314",
             date: 14700000123
         }
