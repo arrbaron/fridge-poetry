@@ -111,3 +111,5 @@ const EventListeners = {
 
 App.createHaiku(App.getVerse(MOCK_VERSES.beginnings), App.getVerse(MOCK_VERSES.middles), App.getVerse(MOCK_VERSES.endings));
 HTMLRenderer.displayHaikus(App.haikus);
+
+console.log(syllable("dragon"));
