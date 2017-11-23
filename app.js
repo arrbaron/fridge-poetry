@@ -70,6 +70,10 @@ const MOCK_VERSES =
 const App = {
     haikus: [],
     
+    reset: function() {
+        this.seedData(this.haikus);
+    },
+
     getRecentHaikus: function() {
         setTimeout(() => { callbackFn(MOCK_VERSES)}, 1000);
     },
@@ -102,6 +106,16 @@ const App = {
         };
         
         this.createHaiku(newVerse, this.getRandomVerse(MOCK_VERSES.middles), this.getRandomVerse(MOCK_VERSES.endings));
+    },
+
+    seedData: function(data) {
+        const seedCount = 3;
+
+        for (let i = 0; i < seedCount; i++) {
+            this.createHaiku(this.getRandomVerse(MOCK_VERSES.beginnings), this.getRandomVerse(MOCK_VERSES.middles), this.getRandomVerse(MOCK_VERSES.endings));
+        }
+
+        HTMLRenderer.displayHaikus(this.haikus);
     }
 };
 
@@ -111,9 +125,9 @@ const HTMLRenderer = {
         data.forEach((item, index) => {
             $(".haikus").append(`
                 <div class="haiku">
-                    <p>${item.beginning.text} (${item.beginning.author})</p>
-                    <p>${item.middle.text} (${item.middle.author})</p>
-                    <p>${item.ending.text} (${item.ending.author})</p>
+                    <p>${item.beginning.text}</p>
+                    <p>${item.middle.text}</p>
+                    <p>${item.ending.text}</p>
                 </div>
             `);
         });
@@ -122,9 +136,9 @@ const HTMLRenderer = {
     displayNewHaiku: function(haiku) {
         $(".haikus").append(`
                 <div class="haiku">
-                    <p>${haiku.beginning.text} (${haiku.beginning.author})</p>
-                    <p>${haiku.middle.text} (${haiku.middle.author})</p>
-                    <p>${haiku.ending.text} (${haiku.ending.author})</p>
+                    <p>${haiku.beginning.text}</p>
+                    <p>${haiku.middle.text}</p>
+                    <p>${haiku.ending.text}</p>
                 </div>
         `);
     }
@@ -150,3 +164,5 @@ const EventListeners = {
 
 EventListeners.handleHaikuFormSubmit();
 EventListeners.handleHaikuClear();
+
+$(App.reset());
