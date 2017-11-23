@@ -79,8 +79,6 @@ const App = {
     },
 
     createHaiku: function(parts) {
-        console.log("createHaiku" + parts[1].text);
-        
         let newHaiku = {
             beginning: parts[0],
             middle: parts[1],
@@ -99,9 +97,7 @@ const App = {
         return randomVerse;
     },
 
-    createVerse: function(verse) {
-        console.log("createVerse" + verse);
-        
+    createVerse: function(verse) {        
         let newVerse = {
             id: 190880,
             text: verse,
@@ -135,7 +131,7 @@ const App = {
             }
         }
         // create a new haiku with our verse and two other verses
-        console.log(partsToInsert[0].text);
+
         return [partsToInsert[0], partsToInsert[1], partsToInsert[2]];
     },
 
