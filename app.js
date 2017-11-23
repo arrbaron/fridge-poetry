@@ -82,6 +82,7 @@ const App = {
         };
 
         this.haikus.push(newHaiku);
+        HTMLRenderer.displayNewHaiku(newHaiku);
         return newHaiku;
     },
 
@@ -90,24 +91,62 @@ const App = {
 
         randomVerse = data[Math.floor(Math.random() * data.length)];
         return randomVerse;
+    },
+
+    createVerse: function(verse) {
+        let newVerse = {
+            id: 190880,
+            text: verse,
+            author: "newAuthor",
+            date: 190909
+        };
+        
+        this.createHaiku(newVerse, this.getRandomVerse(MOCK_VERSES.middles), this.getRandomVerse(MOCK_VERSES.endings));
     }
 };
 
 const HTMLRenderer = {
     displayHaikus: function(data) {
+        $(".haikus").empty();
         data.forEach((item, index) => {
             $(".haikus").append(`
-                <p>${item.beginning.text} (${item.beginning.author})</p>
-                <p>${item.middle.text} (${item.middle.author})</p>
-                <p>${item.ending.text} (${item.ending.author})</p>
+                <div class="haiku">
+                    <p>${item.beginning.text} (${item.beginning.author})</p>
+                    <p>${item.middle.text} (${item.middle.author})</p>
+                    <p>${item.ending.text} (${item.ending.author})</p>
+                </div>
             `);
         });
+    },
+
+    displayNewHaiku: function(haiku) {
+        $(".haikus").append(`
+                <div class="haiku">
+                    <p>${haiku.beginning.text} (${haiku.beginning.author})</p>
+                    <p>${haiku.middle.text} (${haiku.middle.author})</p>
+                    <p>${haiku.ending.text} (${haiku.ending.author})</p>
+                </div>
+        `);
     }
 };
 
 const EventListeners = {
+    handleHaikuFormSubmit: function() {
+        $(".verse-form").on("submit", function(event) {
+            event.preventDefault();
+            let newVerse = $(".verse__textbox").val();
+            
+            App.createVerse(newVerse);
+            $(".verse__textbox").val("");
+        });
+    },
 
+    handleHaikuClear: function() {
+        $(".verse__clear").click(function() {
+            $(".haikus").empty();
+        });
+    }
 };
 
-App.createHaiku(App.getRandomVerse(MOCK_VERSES.beginnings), App.getRandomVerse(MOCK_VERSES.middles), App.getRandomVerse(MOCK_VERSES.endings));
-HTMLRenderer.displayHaikus(App.haikus);
+EventListeners.handleHaikuFormSubmit();
+EventListeners.handleHaikuClear();
