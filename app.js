@@ -1,6 +1,6 @@
 const MOCK_VERSES = 
 {
-    beginnings: 
+    edges: 
     [
         {
             id: "111",
@@ -19,10 +19,28 @@ const MOCK_VERSES =
             text: "and crying we go",
             author: "haikudude13434",
             date: 14700000123
+        },
+        {
+            id: "117",
+            text: "let's be together",
+            author: "haikudude123423423",
+            date: 14700000123
+        },
+        {
+            id: "118",
+            text: "you smell like dandruff",
+            author: "haikudude112313",
+            date: 14700000123
+        },
+        {
+            id: "119",
+            text: "I hear your teardrops",
+            author: "haikudude144314",
+            date: 14700000123
         }
     ],
     
-    middles:
+    centers:
     [
        {
             id: "114",
@@ -43,35 +61,13 @@ const MOCK_VERSES =
             date: 14700000123
         } 
     ],
-
-    endings:
-    [
-        {
-            id: "117",
-            text: "let's be together",
-            author: "haikudude123423423",
-            date: 14700000123
-        },
-        {
-            id: "118",
-            text: "you smell like dandruff",
-            author: "haikudude112313",
-            date: 14700000123
-        },
-        {
-            id: "119",
-            text: "I hear your teardrops",
-            author: "haikudude144314",
-            date: 14700000123
-        }
-    ]
 };
 
 const App = {
     haikus: [],
     
     reset: function() {
-        this.seedData(this.haikus);
+        // this.seedData(this.haikus);
     },
 
     getRecentHaikus: function() {
@@ -113,11 +109,11 @@ const App = {
     insertVerse: function(newVerse) {
         console.log("insertVerse" + newVerse.text);
         
-        const {beginnings, middles, endings} = MOCK_VERSES;
-        let partsToInsert = [this.getRandomVerse(beginnings), this.getRandomVerse(middles), this.getRandomVerse(endings)];
+        const {edges, centers} = MOCK_VERSES;
+        let partsToInsert = [this.getRandomVerse(edges), this.getRandomVerse(centers), this.getRandomVerse(edges)];
 
         // choose a list randomly
-        let lines = [beginnings, middles, endings];
+        let lines = [edges, centers];
         let randomIndex = Math.floor(Math.random() * lines.length);
         let randomLine = lines[randomIndex];
 
@@ -139,7 +135,7 @@ const App = {
         const seedCount = 3;
 
         for (let i = 0; i < seedCount; i++) {
-            this.createHaiku([this.getRandomVerse(MOCK_VERSES.beginnings), this.getRandomVerse(MOCK_VERSES.middles), this.getRandomVerse(MOCK_VERSES.endings)]);
+            this.createHaiku([this.getRandomVerse(MOCK_VERSES.edges), this.getRandomVerse(MOCK_VERSES.centers), this.getRandomVerse(MOCK_VERSES.edges)]);
         }
 
         HTMLRenderer.displayHaikus(this.haikus);
