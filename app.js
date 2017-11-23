@@ -78,15 +78,17 @@ const App = {
         setTimeout(() => { callbackFn(MOCK_VERSES)}, 1000);
     },
 
-    createHaiku: function(beginning, middle, ending) {
+    createHaiku: function(parts) {
+        console.log("createHaiku" + parts[1].text);
+        
         let newHaiku = {
-            beginning: beginning,
-            middle: middle,
-            ending: ending
+            beginning: parts[0],
+            middle: parts[1],
+            ending: parts[2]
         };
 
         this.haikus.push(newHaiku);
-        HTMLRenderer.displayNewHaiku(newHaiku);
+        // HTMLRenderer.displayNewHaiku(newHaiku);
         return newHaiku;
     },
 
@@ -98,6 +100,8 @@ const App = {
     },
 
     createVerse: function(verse) {
+        console.log("createVerse" + verse);
+        
         let newVerse = {
             id: 190880,
             text: verse,
@@ -105,14 +109,41 @@ const App = {
             date: 190909
         };
         
-        this.createHaiku(newVerse, this.getRandomVerse(MOCK_VERSES.middles), this.getRandomVerse(MOCK_VERSES.endings));
+        // TODO - validate this is a valid verse
+        // this.insertVerse(newVerse);
+        return newVerse;
+    },
+
+    insertVerse: function(newVerse) {
+        console.log("insertVerse" + newVerse.text);
+        
+        const {beginnings, middles, endings} = MOCK_VERSES;
+        let partsToInsert = [this.getRandomVerse(beginnings), this.getRandomVerse(middles), this.getRandomVerse(endings)];
+
+        // choose a list randomly
+        let lines = [beginnings, middles, endings];
+        let randomIndex = Math.floor(Math.random() * lines.length);
+        let randomLine = lines[randomIndex];
+
+        // put our verse into that list
+        randomLine.push(newVerse);
+
+        // replace the appropriate part with our new verse
+        for (let i = 0; i < partsToInsert.length; i++) {
+            if (i === randomIndex) {
+                partsToInsert[i] = newVerse;
+            }
+        }
+        // create a new haiku with our verse and two other verses
+        console.log(partsToInsert[0].text);
+        return [partsToInsert[0], partsToInsert[1], partsToInsert[2]];
     },
 
     seedData: function(data) {
         const seedCount = 3;
 
         for (let i = 0; i < seedCount; i++) {
-            this.createHaiku(this.getRandomVerse(MOCK_VERSES.beginnings), this.getRandomVerse(MOCK_VERSES.middles), this.getRandomVerse(MOCK_VERSES.endings));
+            this.createHaiku([this.getRandomVerse(MOCK_VERSES.beginnings), this.getRandomVerse(MOCK_VERSES.middles), this.getRandomVerse(MOCK_VERSES.endings)]);
         }
 
         HTMLRenderer.displayHaikus(this.haikus);
@@ -150,7 +181,8 @@ const EventListeners = {
             event.preventDefault();
             let newVerse = $(".verse__textbox").val();
             
-            App.createVerse(newVerse);
+            // App.createVerse(newVerse);
+            HTMLRenderer.displayNewHaiku(App.createHaiku(App.insertVerse(App.createVerse(newVerse))));
             $(".verse__textbox").val("");
         });
     },
