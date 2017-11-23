@@ -1,22 +1,19 @@
 const chai = require("chai");
 const chaiHTTP = require("chai-http");
 
-const {app} = require("../server");
+const { app } = require("../server");
 
 const should = chai.should();
 
 chai.use(chaiHTTP);
 
-describe("GET endpoint", function() {
-   it("should return all existing haikus", function() {
-        return chai.request(app)
-            .get("/")
-            .then(function(res) {
-                res.should.have.status(200);
-                res.should.be.html;
-            });
-   }); 
+describe("GET endpoint", function () {
+  it("should return all existing haikus", function () {
+    return chai.request(app)
+      .get("/")
+      .then(function (res) {
+        res.should.have.status(200);
+        res.should.be.html;
+      });
+  });
 });
-
-// Add one test that verifies that when you hit up the root url for your client,
-// you get a 200 status code and HTML.
