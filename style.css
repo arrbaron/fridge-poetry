@@ -1,3 +1,7 @@
 .haiku {
-    border-bottom: 1px solid black;
+    border: 1px solid black;
+    display: inline-block;
+    margin-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
