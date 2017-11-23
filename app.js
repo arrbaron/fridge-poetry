@@ -85,7 +85,7 @@ const App = {
         return newHaiku;
     },
 
-    getVerse: function(data) {
+    getRandomVerse: function(data) {
         let randomVerse;
 
         randomVerse = data[Math.floor(Math.random() * data.length)];
@@ -109,7 +109,5 @@ const EventListeners = {
 
 };
 
-App.createHaiku(App.getVerse(MOCK_VERSES.beginnings), App.getVerse(MOCK_VERSES.middles), App.getVerse(MOCK_VERSES.endings));
+App.createHaiku(App.getRandomVerse(MOCK_VERSES.beginnings), App.getRandomVerse(MOCK_VERSES.middles), App.getRandomVerse(MOCK_VERSES.endings));
 HTMLRenderer.displayHaikus(App.haikus);
-
-console.log(syllable("dragon"));
