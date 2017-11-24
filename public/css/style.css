@@ -12,6 +12,11 @@
 
 .word {
   display: inline-block;
+  width: 100x;
+  margin-right: 20px;
+  margin-top: 20px;
+  font-size: 1.5em;
+  background-color: white;
 }
 
 .word:hover {
@@ -25,11 +30,12 @@
 .fridge {
   background: lightgrey;
   width: 400px;
-  height: 600px;
+  height: 450px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
   padding: 10px;
+  z-index: -1;
 }
 
 .dragged {
@@ -38,11 +44,4 @@
 
 .drag-over {
   border: 2px dashed black;
-}
-
-.magnet {
-  background-color: cornflowerblue;
-  margin-right: 10px;
-  margin-top: 10px;
-  font-size: 1.25em;
 }

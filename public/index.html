@@ -1,1 +1,29 @@
-hello world
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>five seven five</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="an app for writing haikus with strangers">
+  <link href="css/style.css" rel="stylesheet"> </head>
+
+<body>
+  <main>
+    <div class="words"></div>
+    <form class="verse-form">
+      <legend>Enter your haiku verse</legend>
+      <input type="text" class="verse__textbox" disabled="disabled">
+      <input type="submit" class="verse__submit">
+      <input type="button" class="verse__clear" value="Clear"> </form>
+    <div class="poems"></div>
+  </main>
+  <div class="fridge"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="js/lib/jquery-ui/jquery-ui.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/event-listeners.js"></script>
+  <script src="js/html-renderer.js"></script>
+  <script src="js/app.js"></script> 
+</body>
+</html>
