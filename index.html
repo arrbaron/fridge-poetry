@@ -10,16 +10,18 @@
 
 <body>
   <main>
+    <div class="words"></div>
     <form class="verse-form">
       <legend>Enter your haiku verse</legend>
-      <input type="text" class="verse__textbox">
+      <input type="text" class="verse__textbox" disabled="disabled">
       <input type="submit" class="verse__submit">
       <input type="button" class="verse__clear" value="Clear"> </form>
     <div class="haikus"></div>
   </main>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="data.js"></script>
   <script src="event-listeners.js"></script>
   <script src="html-renderer.js"></script>
-  <script src="app.js"></script> </body>
-
+  <script src="app.js"></script> 
+</body>
 </html>

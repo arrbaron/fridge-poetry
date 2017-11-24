@@ -1,4 +1,10 @@
 const EventListeners = {
+  startListeners: function() {
+    this.handleHaikuFormSubmit();
+    this.handleHaikuClear();
+    this.handleWordClicked();
+  },
+  
   handleHaikuFormSubmit: function () {
     $(".verse-form").on("submit", function (event) {
       event.preventDefault();
@@ -13,6 +19,15 @@ const EventListeners = {
   handleHaikuClear: function () {
     $(".verse__clear").click(function () {
       $(".haikus").empty();
+    });
+  },
+
+  handleWordClicked: function() {
+    $(".words").on("click", ".word", function(event) {
+      let word = $(this).text();
+
+      HTMLRenderer.addWord(word);
+      $(this).remove();
     });
   }
 };

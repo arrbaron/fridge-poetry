@@ -20,5 +20,19 @@ const HTMLRenderer = {
       <p>${haiku.ending.text}</p>
       </div>
     `);
+  },
+
+  displayWords: function(words) {
+    words.forEach((item, index) => {
+      console.log("ee");
+      $(".words").append(`
+        <button class="word">${item}</button>
+      `);
+    });
+  },
+
+  addWord: function(word) {
+    let currentWords = $(".verse__textbox").val();
+    $(".verse__textbox").val(`${currentWords} ${word}`);
   }
 };
