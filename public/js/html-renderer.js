@@ -25,11 +25,10 @@ const HTMLRenderer = {
   displayWords: function(words) {
     words.forEach((item, index) => {
       $(".words").append(`
-        <button class="word" draggable="true">${item}</button>
+        <div class="word">${item}</div>
       `);
     });
-
-    EventListeners.addDragListeners();
+    EventListeners.handleDragDrop();
   },
 
   addWord: function(word) {
