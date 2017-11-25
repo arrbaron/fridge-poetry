@@ -17,6 +17,7 @@
   margin-top: 20px;
   font-size: 1.5em;
   background-color: white;
+  text-align: center;
 }
 
 .word:hover {
@@ -38,10 +39,6 @@
   z-index: -1;
 }
 
-.dragged {
-  opacity: 0.4;
-}
-
-.drag-over {
-  border: 2px dashed black;
+.buttons {
+  text-align: center;
 }

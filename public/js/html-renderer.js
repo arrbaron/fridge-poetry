@@ -12,14 +12,14 @@ const HTMLRenderer = {
     });
   },
 
-  displayNewPoem: function(poem) {
-    $(".poems").append(`
-      <div class="poem">
-      <p>${poem.beginning.text}</p>
-      <p>${poem.middle.text}</p>
-      <p>${poem.ending.text}</p>
-      </div>
-    `);
+  displayNewFridge: function(fridge) {
+    $(".fridge").empty();
+    
+    fridge.words.forEach((item, index) => {
+      $(".fridge").append(`
+        <div class="word">${item}</div>
+      `);
+    });
   },
 
   displayWords: function(words) {
@@ -31,8 +31,7 @@ const HTMLRenderer = {
     EventListeners.handleDragDrop();
   },
 
-  addWord: function(word) {
-    let currentWords = $(".verse__textbox").val();
-    $(".verse__textbox").val(`${currentWords} ${word}`);
+  emptySection: function(section) {
+    $(section).empty();
   }
 };
