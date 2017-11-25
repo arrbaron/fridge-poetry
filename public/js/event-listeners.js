@@ -3,6 +3,7 @@ const EventListeners = {
     this.handleFridgeButtonNew();
     this.handleFridgeButtonSave();
     this.handleFridgeButtonClear();
+    this.handleFridgeButtonWords();
   },
   
   handleFridgeButtonNew: function() {
@@ -27,6 +28,11 @@ const EventListeners = {
   handleFridgeButtonClear: function() {
     $("body").on("click", ".fridge__button--clear", function () {
       HTMLRenderer.emptySection($(".fridge"));
+    });
+  },
+
+  handleFridgeButtonWords: function() {
+    $("body").on("click", ".fridge__button--words", function () {
       HTMLRenderer.emptySection($(".words"));
       HTMLRenderer.displayWords(App.getRandomWords(WORD_POOL, 3));
     });
