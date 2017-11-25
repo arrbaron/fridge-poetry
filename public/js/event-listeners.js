@@ -1,47 +1,48 @@
 const EventListeners = {
-  dragSourceElement: null,
-
   startListeners: function() {
-    this.handleVerseFormSubmit();
-    this.handlePoemClear();
-    this.handleWordClicked();
+    this.handleFridgeButtonNew();
+    this.handleFridgeButtonSave();
+    this.handleFridgeButtonClear();
   },
   
-  handleVerseFormSubmit: function () {
-    $(".verse-form").on("submit", function (event) {
-      event.preventDefault();
-      let newVerse = $(".verse__textbox").val();
-
-      // App.createVerse(newVerse);
-      HTMLRenderer.displayNewPoem(App.createPoem(App.insertVerse(App.createVerse(newVerse))));
-      $(".verse__textbox").val("");
+  handleFridgeButtonNew: function() {
+    $("body").on("click", ".fridge__button--new", function(){
+      HTMLRenderer.displayNewFridge(App.getRandomFridge());
     });
   },
 
-  handlePoemClear: function () {
-    $(".verse__clear").click(function () {
-      $(".poems").empty();
+  handleFridgeButtonSave: function() {
+    $("body").on("click", ".fridge__button--save", function () {
+      let sortedItems = $.makeArray($(".fridge .word"));
+      let texts = [];
+
+      sortedItems.forEach((item, index) => {
+        texts.push(item.innerHTML);
+      });
+
+      App.saveFridge(texts);
     });
   },
 
-  handleWordClicked: function() {
-    $(".words").on("click", ".word", function(event) {
-      let word = $(this).text();
-
-      HTMLRenderer.addWord(word);
-      $(this).remove();
+  handleFridgeButtonClear: function() {
+    $("body").on("click", ".fridge__button--clear", function () {
+      HTMLRenderer.emptySection($(".fridge"));
+      HTMLRenderer.emptySection($(".words"));
+      HTMLRenderer.displayWords(App.getRandomWords(WORD_POOL, 3));
     });
   },
 
   handleDragDrop: function() {
     $(".words").sortable({
       connectWith: ".fridge",
-      items: ".word"
+      items: ".word",
+      tolerance: "pointer"
     });
     
     $(".fridge").sortable({
       connectWith: ".words",
-      items: ".word"
+      items: ".word",
+      tolerance: "pointer"
     });
   }
 };
