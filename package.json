@@ -4,14 +4,14 @@
   "description": "a collaborative haiku writing tool",
   "main": "app.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node public/js/server.js",
     "test": "mocha test/ */*.test.js"
   },
   "author": "Roy Baron",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
-    "syllable": "^3.0.0"
+    "mongoose": "^4.13.5"
   },
   "devDependencies": {
     "chai": "^4.1.2",

@@ -5,15 +5,12 @@ const App = {
   reset: function() {
     this.seedFridges(5);
     EventListeners.startListeners();
-    HTMLRenderer.displayWords(App.getRandomWords(WORD_POOL, 3));
-    HTMLRenderer.displayNewFridge(this.getRandomFridge());
+    HTMLRenderer.displayFridge(this.getRandomFridge());
   },
 
   getRandomFridge: function() {
     let randomFridge = this.fridges[Math.floor(Math.random() * this.fridges.length)];
 
-    activeFridge = randomFridge;
-    console.log(this.fridges);
     return randomFridge;
   },
 

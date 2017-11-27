@@ -1,15 +1,40 @@
 const express = require("express");
-const syllable = require("syllable");
+const mongoose = require("mongoose");
+const {PORT, DATABASE_URL} = require("./config");
+const {Fridge} = require("./models");
+
 const app = express();
+
+mongoose.Promise = global.Promise;
 
 app.use(express.static("public"));
 
 app.get("/", () => {
   console.log("GET request to /");
-  // res.send(syllable("hello world"));
-  res.send("hello squirrel");
+  
 });
 
-app.listen(process.env.PORT || 8080);
+let server;
 
-exports.app = app;
+function runServer(DATABASE_URL, PORT) {
+  return new Promise((resolve, reject) => {
+    mongoose.connect(DATABASE_URL, err => {
+      if (err) {
+        return reject(err);
+      }
+
+      server = app.listen(port, () => {
+        console.log(`Listening on port ${port}.`);
+        resolve();
+      })
+      .on("error", err => {
+        mongoose.disconnect();
+        reject(err);
+      });
+    });
+  });
+}
+
+if (require.main === module) {
+  runServer().catch(err => console.error(err));
+}
