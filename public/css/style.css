@@ -3,11 +3,8 @@
 }
 
 .poem {
-  border: 1px solid black;
-  display: inline-block;
-  margin-top: 20px;
-  padding-left: 5px;
-  padding-right: 5px;
+  margin-top: 50px;
+  border-top: 5px solid black;
 }
 
 .word {
@@ -30,8 +27,8 @@
 
 .fridge {
   background: lightgrey;
-  width: 400px;
-  height: 450px;
+  width: 800px;
+  height: 600px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;

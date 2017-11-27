@@ -12,19 +12,26 @@ const HTMLRenderer = {
     });
   },
 
-  displayNewFridge: function(fridge) {
-    $(".fridge").empty();
+  displayFridge: function(fridge) {
+    this.displayWordBank(App.getRandomWords(WORD_POOL, 3));
+    this.displayPoem(fridge);
+  },
+
+  displayPoem: function(poem) {
+    $(".poem").empty();
     
-    fridge.words.forEach((item, index) => {
-      $(".fridge").append(`
+    poem.words.forEach((item, index) => {
+      $(".poem").append(`
         <div class="word">${item}</div>
       `);
     });
   },
 
-  displayWords: function(words) {
+  displayWordBank: function(words) {
+    $(".word-bank").empty();
+    
     words.forEach((item, index) => {
-      $(".words").append(`
+      $(".word-bank").append(`
         <div class="word">${item}</div>
       `);
     });
