@@ -16,9 +16,9 @@ app.get("/", () => {
 
 let server;
 
-function runServer(DATABASE_URL, PORT) {
+function runServer(databaseURL=DATABASE_URL, port=PORT) {
   return new Promise((resolve, reject) => {
-    mongoose.connect(DATABASE_URL, err => {
+    mongoose.connect(databaseURL, err => {
       if (err) {
         return reject(err);
       }
