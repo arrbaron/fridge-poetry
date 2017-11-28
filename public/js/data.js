@@ -56,7 +56,7 @@ const MOCK_VERSES =
     }
   ];
 
-const WORD_POOL = {
+const MAGNETS = {
   nouns: [
     "dog",
     "cat",

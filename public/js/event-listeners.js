@@ -35,7 +35,7 @@ const EventListeners = {
   handleFridgeButtonWords: function() {
     $("body").on("click", ".fridge__button--words", function () {
       HTMLRenderer.emptySection($(".words"));
-      HTMLRenderer.displayWordBank(App.getRandomWords(WORD_POOL, 3));
+      HTMLRenderer.displayWordBank(App.getRandomWords(MAGNETS, 3));
     });
   },
 
