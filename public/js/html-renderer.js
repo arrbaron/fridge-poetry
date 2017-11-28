@@ -13,7 +13,7 @@ const HTMLRenderer = {
   },
 
   displayFridge: function(fridge) {
-    this.displayWordBank(App.getRandomWords(MAGNETS, 3));
+    this.displayWordBank(App.getRandomWords(WORD_BANK, 3));
     this.displayPoem(fridge);
   },
 
