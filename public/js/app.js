@@ -36,9 +36,9 @@ const App = {
   getRandomWords: function(words, count) {
     let randomWords = [];
 
-    for (let partOfSpeech in WORD_POOL) {
+    for (let partOfSpeech in WORD_BANK) {
       for (let i = 0; i < count; i++) {
-        let wordToAdd = WORD_POOL[partOfSpeech][Math.floor(Math.random() * WORD_POOL[partOfSpeech].length)];
+        let wordToAdd = WORD_BANK[partOfSpeech][Math.floor(Math.random() * WORD_BANK[partOfSpeech].length)];
         randomWords.push(wordToAdd);
       }
     }
@@ -47,7 +47,7 @@ const App = {
 
   seedFridges: function(count) {
     for (let i = 0; i < count; i++) {
-      this.saveFridge(this.getRandomWords(WORD_POOL, 1));
+      this.saveFridge(this.getRandomWords(WORD_BANK, 1));
     }
   }
 };
