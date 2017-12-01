@@ -6,15 +6,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="an app for writing fridge poetry with strangers">
-  <link href="css/style.css" rel="stylesheet"> </head>
+  <link href="css/style.css" rel="stylesheet">
+</head>
 
 <body>
+  <header>
+    <h1><a href="#" class="landing-link">Fridge Poetry</a></h1>
+  </header>
   <main>
-    <div class="fridge">
+    <section class="landing">
+      <h2>Welcome to Fridge Poetry!</h2>
+      <p>Fridge Poetry is a place for you to create poetry! On a fridge! On the internet!</p>
+      <p><a href="#" class="register-link">Register</a> or <a href="#" class="login-link">log in</a> to get started!</p>
+    </section>
+    <form class="form form--register" hidden>
+      <legend>Register</legend>
+      <input type="text" class="form--register__username" placeholder="username" required>
+      <input type="password" class="form--register__password" placeholder="username" required>
+      <input type="submit" class="form--register__submit" value="Register">
+    </form>
+    <form class="form form--login" hidden>
+      <legend>Login</legend>
+      <input type="text" placeholder="username" required>
+      <input type="password" placeholder="username" required>
+      <input type="submit" class="form--login__submit" value="Login">
+    </form>
+    <div class="fridge" hidden>
       <div class="word-bank"></div>
       <div class="poem"></div>
     </div>
-    <div class="buttons">
+    <div class="buttons" hidden>
       <input type="button" class="fridge__button--new" value="Get new fridge">
       <input type="button" class="fridge__button--save" value="Save fridge">
     </div>

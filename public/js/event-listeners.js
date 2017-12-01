@@ -4,6 +4,8 @@ const EventListeners = {
     this.handleFridgeButtonSave();
     this.handleFridgeButtonClear();
     this.handleFridgeButtonWords();
+    this.handleLinks();
+    this.handleForms();
   },
   
   handleFridgeButtonNew: function() {
@@ -36,6 +38,31 @@ const EventListeners = {
     $("body").on("click", ".fridge__button--words", function () {
       HTMLRenderer.emptySection($(".words"));
       HTMLRenderer.displayWordBank(App.getRandomWords(WORD_BANK, 3));
+    });
+  },
+
+  handleLinks: function() {
+    $("body").on("click", ".register-link", function() {
+      HTMLRenderer.showSection(".form--register");
+    });
+    $("body").on("click", ".login-link", function () {
+      HTMLRenderer.showSection(".form--login");
+    });
+    $("body").on("click", ".landing-link", function () {
+      HTMLRenderer.showSection(".landing");
+    });
+  },
+
+  handleForms: function() {
+    $(".form--register").on("submit", function (event) {
+      event.preventDefault();
+
+      let username = $(".form--register__username").val();
+      let password = $(".form--register__password").val();
+
+      console.log(`${username} ${password}`);
+      App.registerUser(username, password);
+      HTMLRenderer.showSection(".form--login");
     });
   },
 

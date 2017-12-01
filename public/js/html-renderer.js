@@ -40,5 +40,15 @@ const HTMLRenderer = {
 
   emptySection: function(section) {
     $(section).empty();
+  },
+
+  showSection: function(section) {
+    const sections = [".landing", ".form", ".fridge", ".buttons"];
+
+    sections.forEach((item, index) => {
+      $(item).prop("hidden", true);
+    });
+  
+    $(section).prop("hidden", false);
   }
 };

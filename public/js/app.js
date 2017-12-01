@@ -2,12 +2,12 @@ const App = {
   fridges: [],
   activeFridge: {},
 
-  registerUser: function() {
+  registerUser: function(username, password) {
     $.ajax({
       method: "POST",
       url: "http://localhost:8080/api/auth/register",
       contentType: "application/json",
-      data: JSON.stringify({username: "user", password: "password"})
+      data: JSON.stringify({ username: username, password: password })
     })
       .done(function (result) {
         console.log(result);
