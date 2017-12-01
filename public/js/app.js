@@ -2,10 +2,65 @@ const App = {
   fridges: [],
   activeFridge: {},
 
+  registerUser: function() {
+    $.ajax({
+      method: "POST",
+      url: "http://localhost:8080/api/auth/register",
+      contentType: "application/json",
+      data: JSON.stringify({username: "user", password: "password"})
+    })
+      .done(function (result) {
+        console.log(result);
+      })
+      .fail(function () {
+        // HTMLRenderer.showErr();
+      });
+  },
+
+  loginUser: function() {
+    $.ajax({
+      method: "POST",
+      url: "http://localhost:8080/api/auth/login",
+      contentType: "application/json",
+      data: JSON.stringify({ username: "user", password: "password" })
+    })
+      .done(function (result) {
+        const {authToken} = result;
+        localStorage.setItem("token", authToken);
+        // const authToken = localStorage.getItem("token");
+      })
+      .fail(function () {
+        // HTMLRenderer.showErr();
+      });
+  },
+
+  accessEndPoint: function() {
+    $.ajax({
+      method: "POST",
+      url: "http://localhost:8080/api/auth/login",
+      contentType: "application/json",
+      data: JSON.stringify({ username: "user", password: "password" }),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${authToken}`
+      } 
+    })
+      .done(function (result) {
+        const { authToken } = result;
+        localStorage.setItem("token", authToken);
+        // const authToken = localStorage.getItem("token");
+      })
+      .fail(function () {
+        // HTMLRenderer.showErr();
+      });
+  },
+
   reset: function() {
     this.seedFridges(5);
     EventListeners.startListeners();
     HTMLRenderer.displayFridge(this.getRandomFridge());
+    // this.ajaxRequest();
+    this.loginUser();
   },
 
   getRandomFridge: function() {
