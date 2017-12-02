@@ -62,7 +62,21 @@ const EventListeners = {
 
       console.log(`${username} ${password}`);
       App.registerUser(username, password);
-      HTMLRenderer.showSection(".form--login");
+
+      $(".form--register__username").val("");
+      $(".form--register__password").val("");
+    });
+    $(".form--login").on("submit", function (event) {
+      event.preventDefault();
+
+      let username = $(".form--login__username").val();
+      let password = $(".form--login__password").val();
+
+      console.log(`${username} ${password}`);
+      App.loginUser(username, password);
+
+      $(".form--register__username").val("");
+      $(".form--register__password").val("");
     });
   },
 

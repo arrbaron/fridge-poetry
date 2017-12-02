@@ -11,22 +11,27 @@ const App = {
     })
       .done(function (result) {
         console.log(result);
+        HTMLRenderer.showSection(".form--login");
       })
       .fail(function () {
         // HTMLRenderer.showErr();
       });
   },
 
-  loginUser: function() {
+  loginUser: function(username, password) {
+    console.log(`${username} ${password}`);
     $.ajax({
       method: "POST",
       url: "http://localhost:8080/api/auth/login",
       contentType: "application/json",
-      data: JSON.stringify({ username: "user", password: "password" })
+      data: JSON.stringify({ username: username, password: password })
     })
       .done(function (result) {
         const {authToken} = result;
         localStorage.setItem("token", authToken);
+        console.log(authToken);
+        console.log(password);
+        HTMLRenderer.showSection(".fridge");
         // const authToken = localStorage.getItem("token");
       })
       .fail(function () {
@@ -59,8 +64,6 @@ const App = {
     this.seedFridges(5);
     EventListeners.startListeners();
     HTMLRenderer.displayFridge(this.getRandomFridge());
-    // this.ajaxRequest();
-    this.loginUser();
   },
 
   getRandomFridge: function() {
