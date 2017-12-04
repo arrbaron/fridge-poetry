@@ -1,6 +1,7 @@
 const EventListeners = {
   startListeners: function() {
     this.handleFridgeButtonNew();
+    this.handleFridgeButtonCreate();
     this.handleFridgeButtonSave();
     this.handleFridgeButtonClear();
     this.handleFridgeButtonWords();
@@ -11,6 +12,12 @@ const EventListeners = {
   handleFridgeButtonNew: function() {
     $("body").on("click", ".fridge__button--new", function(){
       HTMLRenderer.displayFridge(App.getRandomFridge());
+    });
+  },
+
+  handleFridgeButtonCreate: function () {
+    $("body").on("click", ".fridge__button--create", function () {
+      HTMLRenderer.displayFridge();
     });
   },
 
@@ -29,9 +36,8 @@ const EventListeners = {
         wordBank.push(item.innerText);
       });
 
-      App.saveFridge(poem);
-      console.log(poem);
       App.addFridge(wordBank, poem);
+      App.saveFridge(wordBank, poem);
     });
   },
 
