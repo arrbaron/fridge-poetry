@@ -15,12 +15,13 @@ const HTMLRenderer = {
   displayFridge: function(fridge) {
     this.displayWordBank(App.getRandomWords(WORD_BANK, 3));
     this.displayPoem(fridge);
+    console.log(fridge);
   },
 
   displayPoem: function(poem) {
     $(".poem").empty();
     
-    poem.words.forEach((item, index) => {
+    poem.poem.forEach((item, index) => {
       $(".poem").append(`
         <div class="word">${item}</div>
       `);
@@ -29,7 +30,6 @@ const HTMLRenderer = {
 
   displayWordBank: function(words) {
     $(".word-bank").empty();
-    
     words.forEach((item, index) => {
       $(".word-bank").append(`
         <div class="word">${item}</div>
