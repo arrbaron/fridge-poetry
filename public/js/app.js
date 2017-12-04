@@ -60,6 +60,28 @@ const App = {
       });
   },
 
+  addFridge: function(wordBank, poem) {
+    const token = localStorage.getItem("token");
+    
+    $.ajax({
+      method: "POST",
+      url: "http://localhost:8080/fridges",
+      contentType: "application/json",
+      data: JSON.stringify({ wordBank: wordBank, poem: poem }),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .done(function (result) {
+        // add it to the database
+        
+      })
+      .fail(function () {
+        // HTMLRenderer.showErr();
+      });
+  },
+
   reset: function() {
     this.seedFridges(5);
     EventListeners.startListeners();

@@ -16,15 +16,22 @@ const EventListeners = {
 
   handleFridgeButtonSave: function() {
     $("body").on("click", ".fridge__button--save", function () {
-      let sortedItems = $.makeArray($(".fridge .poem .word"));
-      let texts = [];
+      let sortedPoem = $.makeArray($(".fridge .poem .word"));
+      let sortedWordBank = $.makeArray($(".fridge .word-bank .word"));
+      let poem = [];
+      let wordBank = [];
 
-      sortedItems.forEach((item, index) => {
-        console.log(item.innerText);
-        texts.push(item.innerText);
+      sortedPoem.forEach((item, index) => {
+        poem.push(item.innerText);
       });
 
-      App.saveFridge(texts);
+      sortedWordBank.forEach((item, index) => {
+        wordBank.push(item.innerText);
+      });
+
+      App.saveFridge(poem);
+      console.log(poem);
+      App.addFridge(wordBank, poem);
     });
   },
 
