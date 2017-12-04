@@ -24,7 +24,12 @@ const jwtAuth = passport.authenticate("jwt", {session: false});
 router.post("/", jwtAuth, (req, res) => {
   console.log("saving fridge");
   console.log(req.body.poem);
-  console.log(req.body.wordBank)
+  console.log(req.body.wordBank);
+  return Fridge.create({
+    wordBank: req.body.wordBank,
+    poem: req.body.poem,
+    authors: "everyone"
+  });
 });
 
 module.exports = { router };
