@@ -43,7 +43,7 @@ const HTMLRenderer = {
   },
 
   showSection: function(section) {
-    const sections = [".landing", ".form", ".fridge", ".buttons"];
+    const sections = [".landing", ".form", ".fridge"];
 
     sections.forEach((item, index) => {
       $(item).prop("hidden", true);
