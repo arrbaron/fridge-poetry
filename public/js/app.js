@@ -29,8 +29,6 @@ const App = {
       .done(function (result) {
         const {authToken} = result;
         localStorage.setItem("token", authToken);
-        console.log(authToken);
-        console.log(password);
         HTMLRenderer.showSection(".fridge");
         // const authToken = localStorage.getItem("token");
       })
@@ -39,21 +37,15 @@ const App = {
       });
   },
 
-  accessEndPoint: function() {
+  getFridges: function() {
     $.ajax({
-      method: "POST",
-      url: "http://localhost:8080/api/auth/login",
-      contentType: "application/json",
-      data: JSON.stringify({ username: "user", password: "password" }),
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${authToken}`
-      } 
+      method: "GET",
+      url: "http://localhost:8080/fridges",
+      contentType: "application/json"
     })
       .done(function (result) {
-        const { authToken } = result;
-        localStorage.setItem("token", authToken);
-        // const authToken = localStorage.getItem("token");
+        App.populateFridges(result);
+        console.log(App.fridges);
       })
       .fail(function () {
         // HTMLRenderer.showErr();
@@ -74,7 +66,7 @@ const App = {
       }
     })
       .done(function (result) {
-        // add it to the database
+        // send a success message
         
       })
       .fail(function () {
@@ -83,17 +75,17 @@ const App = {
   },
 
   reset: function() {
-    this.seedFridges(5);
-    EventListeners.startListeners();
-    HTMLRenderer.displayFridge(this.getRandomFridge());
+    
+    this.getFridges();
+
   },
 
   getRandomFridge: function() {
     let randomFridge = this.fridges[Math.floor(Math.random() * this.fridges.length)];
 
+    console.log(randomFridge);
     return randomFridge;
   },
-
 
   saveFridge: function(data) {
     let newFridge = {
@@ -125,10 +117,13 @@ const App = {
     return randomWords;
   },
 
-  seedFridges: function(count) {
-    for (let i = 0; i < count; i++) {
-      this.saveFridge(this.getRandomWords(WORD_BANK, 1));
-    }
+  populateFridges(data) {
+    data.forEach((item, index) => {
+      App.fridges.push(item);
+    });
+    // TODO - clean this up
+    EventListeners.startListeners();
+    HTMLRenderer.displayFridge(this.getRandomFridge());
   }
 };
 

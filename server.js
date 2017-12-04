@@ -10,8 +10,6 @@ const {PORT, DATABASE_URL} = require("./config");
 
 const app = express();
 
-console.log(fridgeRouter);
-
 app.use(express.static("public"));
 app.use(morgan('common'));
 

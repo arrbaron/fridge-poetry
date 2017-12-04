@@ -10,26 +10,29 @@ router.use(bodyParser.json());
 
 // get all fridges - no auth
 router.get("/", (req, res) => {
-  // Fridge.find(function (err, fridges) {
-  //   if (err) return console.error(err);
-  //   console.log(fridges);
-  // });
+  Fridge.find(function (err, fridges) {
+    if (err) return console.error(err);
+    res.json(fridges);
+  });
   console.log("get all fridges");
-  res.send("get all fridges");
 });
 
 const jwtAuth = passport.authenticate("jwt", {session: false});
 
-// save a fridge - auth
+// add a fridge - auth
 router.post("/", jwtAuth, (req, res) => {
-  console.log("saving fridge");
-  console.log(req.body.poem);
-  console.log(req.body.wordBank);
+  console.log("adding fridge");
   return Fridge.create({
     wordBank: req.body.wordBank,
     poem: req.body.poem,
     authors: "everyone"
   });
+
+  // TODO - pass along username into an array of authors when they SAVE it
 });
+
+// update a fridge - auth
+
+// delete a fridge - auth
 
 module.exports = { router };
