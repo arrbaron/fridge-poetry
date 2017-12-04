@@ -4,10 +4,7 @@ mongoose.Promise = global.Promise;
 
 const FridgeSchema = mongoose.Schema({
   wordBank: [String],
-  poems: [{
-    words: [String],
-    authors: [String]
-  }],
+  poem: [String],
   authors: [String]
 });
 
