@@ -13,29 +13,38 @@ const HTMLRenderer = {
   },
 
   displayFridge: function(fridge) {
-    this.displayWordBank(App.getRandomWords(WORD_BANK, 3));
+    this.clearFridge();
+    if (fridge) {
+      this.displayWordBank(fridge.wordBank);
+    }
+    else {
+      this.displayWordBank(App.getRandomWords(WORD_BANK, 3));
+    }
     this.displayPoem(fridge);
-    console.log(fridge);
   },
 
   displayPoem: function(poem) {
-    $(".poem").empty();
-    
-    poem.poem.forEach((item, index) => {
-      $(".poem").append(`
+    if (poem) {
+      poem.poem.forEach((item, index) => {
+        $(".poem").append(`
         <div class="word">${item}</div>
       `);
-    });
+      });
+    }
   },
 
   displayWordBank: function(words) {
-    $(".word-bank").empty();
     words.forEach((item, index) => {
       $(".word-bank").append(`
         <div class="word">${item}</div>
       `);
     });
     EventListeners.handleDragDrop();
+  },
+
+  clearFridge: function() {
+    $(".poem").empty();
+    $(".word-bank").empty();
   },
 
   emptySection: function(section) {

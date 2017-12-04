@@ -45,7 +45,6 @@ const App = {
     })
       .done(function (result) {
         App.populateFridges(result);
-        console.log(App.fridges);
       })
       .fail(function () {
         // HTMLRenderer.showErr();
@@ -66,8 +65,6 @@ const App = {
       }
     })
       .done(function (result) {
-        // send a success message
-        
       })
       .fail(function () {
         // HTMLRenderer.showErr();
@@ -75,32 +72,22 @@ const App = {
   },
 
   reset: function() {
-    
     this.getFridges();
-
   },
 
   getRandomFridge: function() {
     let randomFridge = this.fridges[Math.floor(Math.random() * this.fridges.length)];
 
-    console.log(randomFridge);
     return randomFridge;
   },
 
-  saveFridge: function(data) {
+  saveFridge: function(wordbank, poem) {
     let newFridge = {
-      words: [],
-      authors: [
-        "newguy123"
-      ],
-      votes: 8000,
-      dates: 12345,
+      wordBank: wordbank,
+      poem: poem,
+      authors: ["newguy123"]
     };
     
-    data.forEach(function(item, index) {
-      newFridge.words.push(data[index]);
-    });
-
     this.fridges.push(newFridge);
     return newFridge;
   },
@@ -118,6 +105,7 @@ const App = {
   },
 
   populateFridges(data) {
+    App.fridges = [];
     data.forEach((item, index) => {
       App.fridges.push(item);
     });
