@@ -32,6 +32,18 @@ router.post("/", jwtAuth, (req, res) => {
 });
 
 // update a fridge - auth
+router.put("/:id", jwtAuth, (req, res) => {
+  console.log(req.body);
+  Fridge.findById(req.body.id, function (err, fridge) {
+    if (err) return console.error(err);
+    fridge.poem = req.body.poem;
+    fridge.wordBank = req.body.wordBank;
+    fridge.save(function(err, updatedFridge) {
+      if (err) return console.error(err);
+      res.send(updatedFridge);
+    });
+  });
+});
 
 // delete a fridge - auth
 
