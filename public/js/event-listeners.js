@@ -54,6 +54,26 @@ const EventListeners = {
     });
   },
 
+  handleFridgeButtonUpdate: function(id) {
+    console.log(id);
+    $("body").on("click", ".fridge__button--update", function () {
+      let sortedPoem = $.makeArray($(".fridge .poem .word"));
+      let sortedWordBank = $.makeArray($(".fridge .word-bank .word"));
+      let poem = [];
+      let wordBank = [];
+
+      sortedPoem.forEach((item, index) => {
+        poem.push(item.innerText);
+      });
+
+      sortedWordBank.forEach((item, index) => {
+        wordBank.push(item.innerText);
+      });
+      
+      App.updateFridge(id, wordBank, poem);
+    });
+  },
+
   handleLinks: function() {
     $("body").on("click", ".register-link", function() {
       HTMLRenderer.showSection(".form--register");

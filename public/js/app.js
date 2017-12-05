@@ -1,6 +1,6 @@
 const App = {
   fridges: [],
-  activeFridge: {},
+  activeFridge: 0,
 
   registerUser: function(username, password) {
     $.ajax({
@@ -44,7 +44,7 @@ const App = {
       contentType: "application/json"
     })
       .done(function (result) {
-        App.populateFridges(result);
+        return App.populateFridges(result);
       })
       .fail(function () {
         // HTMLRenderer.showErr();
@@ -71,13 +71,37 @@ const App = {
       });
   },
 
+  updateFridge: function (id, wordBank, poem) {
+    const token = localStorage.getItem("token");
+    console.log(id);
+    $.ajax({
+      method: "PUT",
+      url: `http://localhost:8080/fridges/${id}`,
+      contentType: "application/json",
+      data: JSON.stringify({id: id, wordBank: wordBank, poem: poem }),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .done(function (result) {
+        console.log("updating fridge locally");
+        return App.updateFridgeLocal(poem, wordBank);
+      })
+      .fail(function () {
+        // HTMLRenderer.showErr();
+      });
+  },
+
   reset: function() {
     this.getFridges();
   },
 
   getRandomFridge: function() {
-    let randomFridge = this.fridges[Math.floor(Math.random() * this.fridges.length)];
+    let randomIndex = Math.floor(Math.random() * this.fridges.length);
+    let randomFridge = this.fridges[randomIndex];
 
+    this.activeFridge = randomIndex;
     return randomFridge;
   },
 
@@ -90,6 +114,12 @@ const App = {
     
     this.fridges.push(newFridge);
     return newFridge;
+  },
+
+  updateFridgeLocal: function(poem, wordBank) {
+    let currentFridge = this.fridges[this.activeFridge];
+    currentFridge.poem = poem;
+    currentFridge.wordBank = wordBank;
   },
 
   getRandomWords: function(words, count) {

@@ -13,9 +13,11 @@ const HTMLRenderer = {
   },
 
   displayFridge: function(fridge) {
+    console.log(fridge);
     this.clearFridge();
     if (fridge) {
       this.displayWordBank(fridge.wordBank);
+      EventListeners.handleFridgeButtonUpdate(fridge._id);
     }
     else {
       this.displayWordBank(App.getRandomWords(WORD_BANK, 3));
