@@ -32,6 +32,7 @@ const HTMLRenderer = {
   },
 
   displayPoem: function(poem) {
+    this.displayTwitterButton(poem);
     if (poem) {
       poem.poem.forEach((item, index) => {
         $(".poem").append(`
@@ -94,6 +95,18 @@ const HTMLRenderer = {
     setTimeout(function() {
       $(alert).prop("hidden", true)
     }, displayTime);
+  },
+
+  displayTwitterButton: function(poem) {
+    $(".twitter-share-button").remove();
+    let twitterLink = `<a class="twitter-share-button" href = "https://twitter.com/intent/tweet?text=%22`;
+    // <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Share%20your%20fridge!"> Tweet</a>
+    poem.poem.forEach((item, index) => {
+      twitterLink += `${item}%20`;
+    });
+    console.log(twitterLink);
+    $(".fridge").prepend(`${twitterLink}%22%20a%20%23fridgePoem%20created%20on%20@FridgePoetryApp">Tweet this fridge!</a>`);
+    // $("main").append("hello world");
   },
 
   displayUserInfo(username) {
