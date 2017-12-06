@@ -32,13 +32,13 @@ const HTMLRenderer = {
   },
 
   displayPoem: function(poem) {
-    this.displayTwitterButton(poem);
     if (poem) {
       poem.poem.forEach((item, index) => {
         $(".poem").append(`
         <div class="word">${item}</div>
       `);
       });
+      this.displayTwitterButton(poem);
     }
     else {
       let message = ["your", "poem", "here"];

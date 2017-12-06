@@ -103,7 +103,7 @@ const EventListeners = {
     });
     $("body").on("click", ".landing-link", function () {
       HTMLRenderer.showSection(".landing");
-      HTMLRenderer.hideUserInfo();
+      HTMLRenderer.hideElement(".greeting");
     });
   },
 
@@ -128,6 +128,8 @@ const EventListeners = {
       App.loginUser(username, password);
       HTMLRenderer.hideElement(".login");
       HTMLRenderer.showElement(".logout");
+      HTMLRenderer.showElement(".greeting");
+      HTMLRenderer.displayUserInfo(App.currentUser);
 
       $(".form--register__username").val("");
       $(".form--register__password").val("");
@@ -145,6 +147,7 @@ const EventListeners = {
     $("body").on("click", ".logout", function (event) {
       HTMLRenderer.showElement(".login");
       HTMLRenderer.hideElement(this);
+      HTMLRenderer.hideElement(".greeting");
       App.logoutUser();
     });
   },
