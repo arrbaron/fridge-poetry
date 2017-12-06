@@ -66,6 +66,20 @@ const App = {
       });
   },
 
+  getFridgeFromAPI: function(id) {
+    $.ajax({
+      method: "GET",
+      url: `http://localhost:8080/fridges/${id}`,
+      contentType: "application/json"
+    })
+      .done(function (result) {
+        HTMLRenderer.displayFridge(result);
+      })
+      .fail(function () {
+        // HTMLRenderer.showErr();
+      });
+  },
+
   saveFridgeToAPI: function(wordBank, poem, author) {
     const token = localStorage.getItem("token");
     

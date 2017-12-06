@@ -23,6 +23,15 @@ router.get("/random", (req, res) => {
   });
 });
 
+// get a specific fridge - no auth
+router.get("/:id", (req, res) => {
+  console.log("getting specific fridge");
+  Fridge.findById(req.params.id, function(err, fridge) {
+    if (err) return console.error(err);
+    return fridge;
+  });
+});
+
 // get all fridges - no auth
 router.get("/", (req, res) => {
   Fridge.find(function (err, fridges) {
