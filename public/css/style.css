@@ -10,6 +10,10 @@ header, .landing, form {
   text-align: center;
 }
 
+.fridge__info {
+  text-align: center;
+}
+
 .alert {
   height: 50px;
   margin-top: 20px;

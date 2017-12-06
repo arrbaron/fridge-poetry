@@ -43,7 +43,7 @@ const EventListeners = {
         wordBank.push(item.innerText);
       });
 
-      App.saveFridgeToAPI(wordBank, poem);
+      App.saveFridgeToAPI(wordBank, poem, App.currentUser);
       HTMLRenderer.showAlert(".alert--save");
     });
   },
@@ -78,7 +78,7 @@ const EventListeners = {
         wordBank.push(item.innerText);
       });
       
-      App.updateFridgeInAPI(id, wordBank, poem);
+      App.updateFridgeInAPI(id, wordBank, poem, App.currentUser);
       HTMLRenderer.showAlert(".alert--update");
     });
   },
