@@ -20,10 +20,14 @@ const HTMLRenderer = {
       EventListeners.handleFridgeButtonDelete(fridge._id);
       this.displayPoem(fridge);
       this.displayAuthors(fridge.authors);
+      this.hideElement(".fridge__button--save");
+      this.showElement(".fridge__button--update");
     }
     else {
       this.displayWordBank(App.getRandomWords(WORD_BANK, 3));
       this.displayPoem();
+      HTMLRenderer.hideElement(".fridge__button--update");
+      HTMLRenderer.showElement(".fridge__button--save");
     }
   },
 
@@ -99,5 +103,13 @@ const HTMLRenderer = {
 
   hideUserInfo() {
     $(".userinfo").prop("hidden", true);
-  }
+  },
+
+  hideElement(element) {
+    $(element).prop("hidden", true);
+  },
+
+  showElement(element) {
+    $(element).prop("hidden", false);
+  },
 };
