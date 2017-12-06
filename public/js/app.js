@@ -19,7 +19,6 @@ const App = {
   },
 
   loginUser: function(username, password) {
-    console.log(`${username} ${password}`);
     $.ajax({
       method: "POST",
       url: "http://localhost:8080/api/auth/login",
@@ -37,21 +36,38 @@ const App = {
       });
   },
 
-  getFridges: function() {
+  getRandomFridgeFromAPI: function() {
     $.ajax({
       method: "GET",
-      url: "http://localhost:8080/fridges",
+      url: "http://localhost:8080/fridges/random",
       contentType: "application/json"
     })
       .done(function (result) {
-        return App.populateFridges(result);
+        console.log(result);
+        HTMLRenderer.displayFridge(result);
+        // return result;
       })
       .fail(function () {
         // HTMLRenderer.showErr();
       });
   },
 
-  addFridge: function(wordBank, poem) {
+  getAllFridgesFromAPI: function() {
+    $.ajax({
+      method: "GET",
+      url: "http://localhost:8080/fridges",
+      contentType: "application/json"
+    })
+      .done(function (result) {
+        // return App.populateFridges(result);
+        
+      })
+      .fail(function () {
+        // HTMLRenderer.showErr();
+      });
+  },
+
+  saveFridgeToAPI: function(wordBank, poem) {
     const token = localStorage.getItem("token");
     
     $.ajax({
@@ -65,13 +81,14 @@ const App = {
       }
     })
       .done(function (result) {
+        console.log(result);
       })
       .fail(function () {
         // HTMLRenderer.showErr();
       });
   },
 
-  updateFridge: function (id, wordBank, poem) {
+  updateFridgeInAPI: function (id, wordBank, poem) {
     const token = localStorage.getItem("token");
     console.log(id);
     $.ajax({
@@ -85,8 +102,30 @@ const App = {
       }
     })
       .done(function (result) {
-        console.log("updating fridge locally");
-        return App.updateFridgeLocal(poem, wordBank);
+        // console.log("updating fridge locally");
+        // return App.updateFridgeLocal(poem, wordBank);
+        return result;
+      })
+      .fail(function () {
+        // HTMLRenderer.showErr();
+      });
+  },
+
+  deleteFridgeInAPI: function(id) {
+    const token = localStorage.getItem("token");
+    console.log(id);
+    $.ajax({
+      method: "DELETE",
+      url: `http://localhost:8080/fridges/${id}`,
+      contentType: "application/json",
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .done(function (result) {
+        App.getRandomFridgeFromAPI();
+        return result;
       })
       .fail(function () {
         // HTMLRenderer.showErr();
@@ -94,7 +133,9 @@ const App = {
   },
 
   reset: function() {
-    this.getFridges();
+    // this.getAllFridgesFromAPI();
+    this.getRandomFridgeFromAPI();
+    EventListeners.startListeners();
   },
 
   getRandomFridge: function() {
@@ -103,23 +144,6 @@ const App = {
 
     this.activeFridge = randomIndex;
     return randomFridge;
-  },
-
-  saveFridge: function(wordbank, poem) {
-    let newFridge = {
-      wordBank: wordbank,
-      poem: poem,
-      authors: ["newguy123"]
-    };
-    
-    this.fridges.push(newFridge);
-    return newFridge;
-  },
-
-  updateFridgeLocal: function(poem, wordBank) {
-    let currentFridge = this.fridges[this.activeFridge];
-    currentFridge.poem = poem;
-    currentFridge.wordBank = wordBank;
   },
 
   getRandomWords: function(words, count) {
@@ -133,16 +157,6 @@ const App = {
     }
     return randomWords;
   },
-
-  populateFridges(data) {
-    App.fridges = [];
-    data.forEach((item, index) => {
-      App.fridges.push(item);
-    });
-    // TODO - clean this up
-    EventListeners.startListeners();
-    HTMLRenderer.displayFridge(this.getRandomFridge());
-  }
 };
 
 $(App.reset());
