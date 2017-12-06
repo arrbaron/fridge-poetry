@@ -38,6 +38,10 @@ header, .landing, form {
   color: black;
 }
 
+.alert--login, .alert--register, .alert--unauthorized {
+  background-color: red;
+}
+
 .poem {
   margin-top: 50px;
   border-top: 5px solid black;

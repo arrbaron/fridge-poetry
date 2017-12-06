@@ -45,6 +45,7 @@ const jwtAuth = passport.authenticate("jwt", {session: false});
 // add a fridge - auth
 router.post("/", jwtAuth, (req, res) => {
   console.log("adding fridge");
+  res.send("created fridge");
   return Fridge.create({
     wordBank: req.body.wordBank,
     poem: req.body.poem,

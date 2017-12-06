@@ -13,7 +13,8 @@ const App = {
         HTMLRenderer.showSection(".form--login");
       })
       .fail(function () {
-        // HTMLRenderer.showErr();
+        console.log("couldn't register");
+        HTMLRenderer.showAlert(".alert--register");
       });
   },
 
@@ -32,7 +33,8 @@ const App = {
         HTMLRenderer.displayUserInfo(App.currentUser);
       })
       .fail(function () {
-        // HTMLRenderer.showErr();
+        console.error("couldn't log in");
+        HTMLRenderer.showAlert(".alert--login");
       });
   },
 
@@ -99,9 +101,11 @@ const App = {
     })
       .done(function (result) {
         console.log(result);
+        HTMLRenderer.showAlert(".alert--save");
+        return result;
       })
       .fail(function () {
-        // HTMLRenderer.showErr();
+        HTMLRenderer.showAlert(".alert--unauthorized");
       });
   },
 
@@ -119,10 +123,11 @@ const App = {
       }
     })
       .done(function (result) {
+        HTMLRenderer.showAlert(".alert--update");
         return result;
       })
       .fail(function () {
-        // HTMLRenderer.showErr();
+        HTMLRenderer.showAlert(".alert--unauthorized");
       });
   },
 
@@ -140,10 +145,11 @@ const App = {
     })
       .done(function (result) {
         App.getRandomFridgeFromAPI();
+        HTMLRenderer.showAlert(".alert--delete");
         return result;
       })
       .fail(function () {
-        // HTMLRenderer.showErr();
+        HTMLRenderer.showAlert(".alert--unauthorized");
       });
   },
 
