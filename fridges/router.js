@@ -40,7 +40,7 @@ router.post("/", jwtAuth, (req, res) => {
   return Fridge.create({
     wordBank: req.body.wordBank,
     poem: req.body.poem,
-    authors: "everyone"
+    authors: req.body.authors
   });
 
   // TODO - pass along username into an array of authors when they SAVE it
@@ -52,6 +52,7 @@ router.put("/:id", jwtAuth, (req, res) => {
     if (err) return console.error(err);
     fridge.poem = req.body.poem;
     fridge.wordBank = req.body.wordBank;
+    fridge.authors.push(req.body.authors);
     fridge.save(function(err, updatedFridge) {
       if (err) return console.error(err);
       res.send(updatedFridge);

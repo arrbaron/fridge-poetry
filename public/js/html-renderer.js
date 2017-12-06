@@ -13,22 +13,31 @@ const HTMLRenderer = {
   },
 
   displayFridge: function(fridge) {
-    console.log(fridge);
     this.clearFridge();
     if (fridge) {
       this.displayWordBank(fridge.wordBank);
       EventListeners.handleFridgeButtonUpdate(fridge._id);
       EventListeners.handleFridgeButtonDelete(fridge._id);
+      this.displayPoem(fridge);
+      this.displayAuthors(fridge.authors);
     }
     else {
       this.displayWordBank(App.getRandomWords(WORD_BANK, 3));
+      this.displayPoem();
     }
-    this.displayPoem(fridge);
   },
 
   displayPoem: function(poem) {
     if (poem) {
       poem.poem.forEach((item, index) => {
+        $(".poem").append(`
+        <div class="word">${item}</div>
+      `);
+      });
+    }
+    else {
+      let message = ["your", "poem", "here"];
+      message.forEach((item, index) => {
         $(".poem").append(`
         <div class="word">${item}</div>
       `);
@@ -43,6 +52,16 @@ const HTMLRenderer = {
       `);
     });
     EventListeners.handleDragDrop();
+  },
+
+  displayAuthors: function(authors) {
+    console.log(authors);
+    $(".fridge__info__authors").empty();
+    authors.forEach((item, index) => {
+      $(".fridge__info__authors").append(`
+      <span class="fridge__info__author">${item}, </span>
+      `);
+    });
   },
 
   clearFridge: function() {
