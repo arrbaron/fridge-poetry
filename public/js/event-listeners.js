@@ -44,7 +44,7 @@ const EventListeners = {
       });
 
       App.saveFridgeToAPI(wordBank, poem);
-      // App.saveFridge(wordBank, poem);
+      HTMLRenderer.showAlert(".alert--save");
     });
   },
 
@@ -79,6 +79,7 @@ const EventListeners = {
       });
       
       App.updateFridgeInAPI(id, wordBank, poem);
+      HTMLRenderer.showAlert(".alert--update");
     });
   },
 
@@ -87,6 +88,7 @@ const EventListeners = {
     $(".fridge__button--delete").on("click", function () {
       console.log(id);
       App.deleteFridgeInAPI(id);
+      HTMLRenderer.showAlert(".alert--delete");
     });
   },
 
@@ -99,6 +101,7 @@ const EventListeners = {
     });
     $("body").on("click", ".landing-link", function () {
       HTMLRenderer.showSection(".landing");
+      HTMLRenderer.hideUserInfo();
     });
   },
 
