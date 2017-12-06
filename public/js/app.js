@@ -36,6 +36,10 @@ const App = {
       });
   },
 
+  logoutUser: function() {
+    localStorage.removeItem("token");
+  },
+
   getRandomFridgeFromAPI: function() {
     $.ajax({
       method: "GET",

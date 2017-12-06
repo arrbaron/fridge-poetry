@@ -8,6 +8,8 @@ const EventListeners = {
       this.handleFridgeButtonSave();
       this.handleFridgeButtonClear();
       this.handleFridgeButtonWords();
+      this.handleLogin();
+      this.handleLogout();
       this.handleLinks();
       this.handleForms();
       this.listenersStarted = true;
@@ -124,9 +126,26 @@ const EventListeners = {
       let password = $(".form--login__password").val();
 
       App.loginUser(username, password);
+      HTMLRenderer.hideElement(".login");
+      HTMLRenderer.showElement(".logout");
 
       $(".form--register__username").val("");
       $(".form--register__password").val("");
+    });
+  },
+
+  handleLogin: function() {
+    $("body").on("click", ".login", function(event) {
+      HTMLRenderer.showElement(".form--login");
+      HTMLRenderer.hideElement(this);
+    });
+  },
+
+  handleLogout: function() {
+    $("body").on("click", ".logout", function (event) {
+      HTMLRenderer.showElement(".login");
+      HTMLRenderer.hideElement(this);
+      App.logoutUser();
     });
   },
 
