@@ -18,6 +18,7 @@ const HTMLRenderer = {
     if (fridge) {
       this.displayWordBank(fridge.wordBank);
       EventListeners.handleFridgeButtonUpdate(fridge._id);
+      EventListeners.handleFridgeButtonDelete(fridge._id);
     }
     else {
       this.displayWordBank(App.getRandomWords(WORD_BANK, 3));

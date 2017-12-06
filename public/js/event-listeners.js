@@ -1,17 +1,24 @@
 const EventListeners = {
+  listenersStarted: false,
+  
   startListeners: function() {
-    this.handleFridgeButtonNew();
-    this.handleFridgeButtonCreate();
-    this.handleFridgeButtonSave();
-    this.handleFridgeButtonClear();
-    this.handleFridgeButtonWords();
-    this.handleLinks();
-    this.handleForms();
+    if (!this.listenersStarted) {
+      this.handleFridgeButtonNew();
+      this.handleFridgeButtonCreate();
+      this.handleFridgeButtonSave();
+      this.handleFridgeButtonClear();
+      this.handleFridgeButtonWords();
+      this.handleLinks();
+      this.handleForms();
+      this.listenersStarted = true;
+    }
   },
   
   handleFridgeButtonNew: function() {
     $("body").on("click", ".fridge__button--new", function(){
-      HTMLRenderer.displayFridge(App.getRandomFridge());
+      // HTMLRenderer.displayFridge(App.getRandomFridge());
+      // HTMLRenderer.displayFridge(App.getRandomFridgeFromAPI());
+      App.getRandomFridgeFromAPI();
     });
   },
 
@@ -36,8 +43,8 @@ const EventListeners = {
         wordBank.push(item.innerText);
       });
 
-      App.addFridge(wordBank, poem);
-      App.saveFridge(wordBank, poem);
+      App.saveFridgeToAPI(wordBank, poem);
+      // App.saveFridge(wordBank, poem);
     });
   },
 
@@ -56,7 +63,8 @@ const EventListeners = {
 
   handleFridgeButtonUpdate: function(id) {
     console.log(id);
-    $("body").on("click", ".fridge__button--update", function () {
+    $(".fridge__button--update").off();
+    $(".fridge__button--update").on("click", function () {
       let sortedPoem = $.makeArray($(".fridge .poem .word"));
       let sortedWordBank = $.makeArray($(".fridge .word-bank .word"));
       let poem = [];
@@ -70,7 +78,15 @@ const EventListeners = {
         wordBank.push(item.innerText);
       });
       
-      App.updateFridge(id, wordBank, poem);
+      App.updateFridgeInAPI(id, wordBank, poem);
+    });
+  },
+
+  handleFridgeButtonDelete: function(id) {
+    $(".fridge__button--delete").off();
+    $(".fridge__button--delete").on("click", function () {
+      console.log(id);
+      App.deleteFridgeInAPI(id);
     });
   },
 
@@ -92,8 +108,7 @@ const EventListeners = {
 
       let username = $(".form--register__username").val();
       let password = $(".form--register__password").val();
-
-      console.log(`${username} ${password}`);
+      
       App.registerUser(username, password);
 
       $(".form--register__username").val("");
@@ -105,7 +120,6 @@ const EventListeners = {
       let username = $(".form--login__username").val();
       let password = $(".form--login__password").val();
 
-      console.log(`${username} ${password}`);
       App.loginUser(username, password);
 
       $(".form--register__username").val("");
