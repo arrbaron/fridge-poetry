@@ -16,7 +16,6 @@ router.get("/random", (req, res) => {
     Fridge.findOne().skip(random).exec(
       function(err, result) {
         console.log("getting random fridge");
-        console.log(result);
         res.send(result);
       }
     );
