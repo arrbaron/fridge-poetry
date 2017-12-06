@@ -2,6 +2,38 @@
   box-sizing: border-box;
 }
 
+header, .landing, form {
+  text-align: center;
+}
+
+.userinfo {
+  text-align: center;
+}
+
+.alert {
+  height: 50px;
+  margin-top: 20px;
+  padding-top: 5px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 2em;
+}
+
+.alert--save {
+  background-color: green;
+  color: black;
+}
+
+.alert--delete {
+  background-color: red;
+  color: black;
+}
+
+.alert--update {
+  background-color: yellow;
+  color: black;
+}
+
 .poem {
   margin-top: 50px;
   border-top: 5px solid black;

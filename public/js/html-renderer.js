@@ -62,5 +62,23 @@ const HTMLRenderer = {
     });
   
     $(section).prop("hidden", false);
+  },
+
+  showAlert: function(alert) {
+    const displayTime = 2000;
+
+    $(alert).prop("hidden", false);
+    setTimeout(function() {
+      $(alert).prop("hidden", true)
+    }, displayTime);
+  },
+
+  displayUserInfo(username) {
+    $(".userinfo").prop("hidden", false);
+    $(".greeting").html(`Hi, ${username}!`);
+  },
+
+  hideUserInfo() {
+    $(".userinfo").prop("hidden", true);
   }
 };

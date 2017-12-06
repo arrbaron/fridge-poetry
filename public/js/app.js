@@ -1,7 +1,4 @@
 const App = {
-  fridges: [],
-  activeFridge: 0,
-
   registerUser: function(username, password) {
     $.ajax({
       method: "POST",
@@ -29,6 +26,7 @@ const App = {
         const {authToken} = result;
         localStorage.setItem("token", authToken);
         HTMLRenderer.showSection(".fridge");
+        HTMLRenderer.displayUserInfo(username);
         // const authToken = localStorage.getItem("token");
       })
       .fail(function () {
@@ -136,14 +134,6 @@ const App = {
     // this.getAllFridgesFromAPI();
     this.getRandomFridgeFromAPI();
     EventListeners.startListeners();
-  },
-
-  getRandomFridge: function() {
-    let randomIndex = Math.floor(Math.random() * this.fridges.length);
-    let randomFridge = this.fridges[randomIndex];
-
-    this.activeFridge = randomIndex;
-    return randomFridge;
   },
 
   getRandomWords: function(words, count) {
