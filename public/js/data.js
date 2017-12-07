@@ -151,7 +151,6 @@ const WORD_BANK = {
   ],
 
   addons: [
-    "&",
     "ing",
     "ly",
     "s",

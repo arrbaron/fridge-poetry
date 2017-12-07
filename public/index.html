@@ -6,18 +6,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="an app for writing fridge poetry with strangers">
+  <link href="css/grid.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
   <header>
-    <h1><a href="javascript:;" class="landing-link">Fridge Poetry</a></h1>
+    <div class="flex-row">
+      <h1><a href="javascript:;" class="landing-link">Fridge Poetry</a></h1>
+    </div>
   </header>
   <main>
     <section class="userinfo" hidden>
       <h2 class="greeting">Hi</h2>
-      <button class="login">Log in</button>
-      <button class="logout">Log out</button>
+      <input type="button" class="login" value="Log in">
+      <input type="button" class="logout" value="Log out">
     </section>
     <div class="alert alert--save" hidden>Fridge saved!</div>
     <div class="alert alert--delete" hidden>Fridge deleted!</div>
@@ -30,37 +33,60 @@
       <p>Fridge Poetry is a place for you to create poetry! On a fridge! On the internet!</p>
       <p><a href="javascript:;" class="register-link">Register</a> or <a href="javascript:;" class="login-link">log in</a> to get started, you poet, you.</p>
     </section>
-    <form class="form form--register" hidden>
-      <legend>Register</legend>
-      <input type="text" class="form--register__username" placeholder="username" required>
-      <input type="password" class="form--register__password" placeholder="password" required>
-      <input type="submit" class="form--register__submit" value="Register">
-    </form>
-    <form class="form form--login" hidden>
-      <legend>Login</legend>
-      <input type="text" class="form--login__username" placeholder="username" required>
-      <input type="password" class="form--login__password" placeholder="password" required>
-      <input type="submit" class="form--login__submit" value="Login">
-    </form>
-    <div class="fridge" hidden>
-      <div class="fridge__info">
-        <span>A poem from the heart(s) and mind(s) of </span>
-        <span class="fridge__info__authors"></span>
-      </div>
-      <div class="buttons">
-        <input type="button" class="fridge__button--new" value="View different fridge">
-        <input type="button" class="fridge__button--update" value="Update this fridge" hidden>
-        <input type="button" class="fridge__button--save" value="Save this fridge" hidden>
-        <input type="button" class="fridge__button--create" value="Create blank fridge">
-        <input type="button" class="fridge__button--delete" value="Delete this fridge">
-      </div>
-      <div class="word-bank"></div>
-      <div class="poem"></div>
+    <div class="flex-row">
+      <form class="form form--register" hidden>
+        <legend>Register</legend>
+        <div class="flex-column">
+          <input type="text" class="form--register__username" placeholder="username" required>
+        </div>
+        <div class="flex-column">
+          <input type="password" class="form--register__password" placeholder="password" required>
+        </div>
+        <input type="submit" class="form--register__submit" value="Register">
+      </form>
     </div>
+    
+    <div class="flex-row">
+      <form class="form form--login" hidden>
+        <legend>Login</legend>
+        <div class="flex-column">
+          <input type="text" class="form--login__username" placeholder="username" required>
+        </div>
+        <div class="flex-column">
+          <input type="password" class="form--login__password" placeholder="password" required>
+        </div>
+        <input type="submit" class="form--login__submit" value="Login">
+      </form>
+    </div>
+    <div class="flex-row">
+      <div class="flex-column">
+        <div class="fridge" hidden>
+          <div class="fridge__info">
+            <span>A poem from the heart(s) and mind(s) of </span>
+            <span class="fridge__info__authors"></span>
+          </div>
+          <div class="word-bank"></div>
+          <div class="poem"></div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-row">
+      <div class="buttons" hidden>
+        <div class="flex-column">
+          <input type="button" class="fridge__button fridge__button--new" value="View different fridge">
+          <input type="button" class="fridge__button fridge__button--update" value="Update this fridge" hidden>
+          <input type="button" class="fridge__button fridge__button--save" value="Save this fridge" hidden>
+          <input type="button" class="fridge__button fridge__button--create" value="Create blank fridge">
+          <input type="button" class="fridge__button fridge__button--delete" value="Delete this fridge">
+        </div>
+      </div>
+    </div>
+    
   </main>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="js/lib/jquery-ui/jquery-ui.js"></script>
+  <script src="js/lib/jquery-ui/jquery.ui.touch-punch.min.js"></script>
   <script src="js/data.js"></script>
   <script src="js/event-listeners.js"></script>
   <script src="js/html-renderer.js"></script>

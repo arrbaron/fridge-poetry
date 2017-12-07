@@ -105,7 +105,7 @@ const HTMLRenderer = {
       twitterLink += `${item}%20`;
     });
     console.log(twitterLink);
-    $(".fridge").prepend(`${twitterLink}%22%20a%20%23fridgePoem%20created%20on%20@FridgePoetryApp">Tweet this fridge!</a>`);
+    $(".fridge").prepend(`<div class="flex-row">${twitterLink}%22%20a%20%23fridgePoem%20created%20on%20@FridgePoetryApp">Tweet this fridge!</a></div>`);
     // $("main").append("hello world");
   },
 
