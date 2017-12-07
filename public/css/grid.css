@@ -9,7 +9,7 @@
   width: 100%;
 }
 
-@media (min-wdith: 900px) {
+@media only screen and (min-wdith: 900px) {
   .flex-row {
     display: flex;
   }
