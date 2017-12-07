@@ -1,0 +1,21 @@
+.flex-row {
+  max-width: 1440px;
+  display: block;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.flex-column {
+  width: 100%;
+}
+
+@media (min-wdith: 900px) {
+  .flex-row {
+    display: flex;
+  }
+
+  .flex-column {
+    flex: 1;
+  }
+}
+

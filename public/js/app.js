@@ -30,6 +30,7 @@ const App = {
         App.currentUser = username;
         localStorage.setItem("token", authToken);
         HTMLRenderer.showSection(".fridge");
+        HTMLRenderer.showElement(".buttons");
         HTMLRenderer.displayUserInfo(App.currentUser);
       })
       .fail(function () {

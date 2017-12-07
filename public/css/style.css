@@ -2,8 +2,20 @@
   box-sizing: border-box;
 }
 
+body {
+  font-size: 2em;
+}
+
 header, .landing, form {
   text-align: center;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1.25em;
 }
 
 .userinfo {
@@ -49,10 +61,8 @@ header, .landing, form {
 
 .word {
   display: inline-block;
-  width: 100x;
   margin-right: 20px;
   margin-top: 20px;
-  font-size: 1.5em;
   background-color: white;
   text-align: center;
 }
@@ -67,8 +77,8 @@ header, .landing, form {
 
 .fridge {
   background: lightgrey;
-  width: 800px;
-  height: 600px;
+  width: 100%;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
@@ -78,4 +88,35 @@ header, .landing, form {
 
 .buttons {
   text-align: center;
+}
+
+.fridge__button {
+  margin-bottom: 10px;
+}
+
+input[type="button"], input[type="submit"] {
+  width: 75%;
+  height: 50px;
+  font-size: 0.75em;
+}
+
+input[type="text"], input[type="password"] {
+  width: 75%;
+  height: 50px;
+  margin-bottom: 40px;
+  font-size: 1.25em;
+}
+
+@media (min-width: 900px) {
+  .fridge {
+    width: 75%;
+  }
+
+  input[type="button"], input[type="submit"], input[type="text"], input[type="password"] {
+    width: 20%;
+  }
+
+  body {
+    font-size: 1.5em;
+  }
 }
