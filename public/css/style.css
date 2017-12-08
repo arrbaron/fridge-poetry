@@ -33,7 +33,7 @@ h2 {
 
 a {
   text-decoration: none;
-  color: #1D0A6B;
+  /* color: #1D0A6B; */
 }
 
 .userinfo {
@@ -156,16 +156,17 @@ input[type="text"], input[type="password"] {
 }
 
   input[type="button"], input[type="submit"], button {
-    background-color: #FFFC63;
+    background-color: lightgray;
     font-family: 'Gloria Hallelujah', cursive;
     border-radius: 5px;
+    font-size: 0.5em;
 }
 
 input[type="text"], input[type="password"] {
     padding: 5px 10px 5px 10px;
     font-family: 'Cabin', sans-serif;
     word-wrap: break-word;
-    background-color: #FFFC63;
+    background-color: lightgray;
     border-radius: 5px;
   }
 
@@ -189,18 +190,30 @@ input[type="text"], input[type="password"] {
     height: 800px;
   }
 
+  .fridge__info {
+    font-size: 1.25em;
+  }
+  
+  .userinfo {
+    position: absolute;
+    right: 100px;
+    top: 0;
+  }
+
   .word {
     font-size: 1.5em;
   }
 
   input[type="button"], input[type="submit"] {
     width: 20%;
-    height: 100px;
+    height: 50px;
     transition:all 0.3s ease;
+    font-size: 0.8em;
+    /* padding: 5px; */
   }
 
   input[type="button"]:hover, input[type="submit"]:hover {
-    background-color: #FFFA00;
+    background-color: rgb(245, 245, 245);
     transform: scale(1.1);
   }
 
@@ -214,13 +227,13 @@ input[type="text"], input[type="password"] {
   }
 
   input[type="text"]:focus, input[type="password"]:focus {
-    background-color: #FFFA00;
+    background-color: rgb(245, 245, 245);
     transform: scale(1.1);
   }
 
   .login, .logout {
     position: absolute;
-    right: 50px;
+    right: 10px;
     top: 10px;
   }
 }

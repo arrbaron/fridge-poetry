@@ -99,7 +99,7 @@ const HTMLRenderer = {
   },
 
   displayTwitterButton: function(poem) {
-    $(".twitter-share-button").remove();
+    $(".twitter-share-button").closest(".flex-row").remove();
     let twitterLink = `<a class="twitter-share-button" href = "https://twitter.com/intent/tweet?text=%22`;
     // <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Share%20your%20fridge!"> Tweet</a>
     poem.poem.forEach((item, index) => {
