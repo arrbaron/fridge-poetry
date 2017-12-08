@@ -29,6 +29,7 @@ const HTMLRenderer = {
       HTMLRenderer.hideElement(".fridge__button--update");
       HTMLRenderer.showElement(".fridge__button--save");
     }
+    this.addRandomRotation();
   },
 
   displayPoem: function(poem) {
@@ -132,5 +133,19 @@ const HTMLRenderer = {
 
   showSpecificElement(element) {
     $(element).prop("hidden", false);
+  },
+
+  addRandomRotation() {
+    const maxAngle = 10;
+
+    $(".word").each(function(index) {
+      let angle = Math.floor(Math.random() * maxAngle) - (maxAngle / 2);
+      $(this).css({
+        '-webkit-transform': 'rotate(' + angle + 'deg)',
+        '-moz-transform': 'rotate(' + angle + 'deg)',
+        '-ms-transform': 'rotate(' + angle + 'deg)',
+        'transform': 'rotate(' + angle + 'deg)'
+      });
+    });
   }
 };

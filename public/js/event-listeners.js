@@ -155,12 +155,39 @@ const EventListeners = {
   handleDragDrop: function() {
     $(".word-bank").sortable({
       connectWith: ".poem",
-      items: ".word"
+      items: ".word",
+      start: function(event, ui) {
+        console.log($(ui.item));
+        const maxAngle = 10;
+        let angle = Math.floor(Math.random() * maxAngle) - (maxAngle / 2);
+        $(ui.item).css({
+          '-webkit-transform': 'rotate(' + angle + 'deg)',
+          '-moz-transform': 'rotate(' + angle + 'deg)',
+          '-ms-transform': 'rotate(' + angle + 'deg)',
+          'transform': 'rotate(' + angle + 'deg)'
+        });
+      },
+      stop: function(event, ui) {
+      }
     });
     
     $(".poem").sortable({
       connectWith: ".word-bank",
-      items: ".word"
+      items: ".word",
+      start: function (event, ui) {
+        console.log($(ui.item));
+        // $(ui.item).addClass("dragging");
+        const maxAngle = 10;
+        let angle = Math.floor(Math.random() * maxAngle) - (maxAngle / 2);
+        $(ui.item).css({
+          '-webkit-transform': 'rotate(' + angle + 'deg)',
+          '-moz-transform': 'rotate(' + angle + 'deg)',
+          '-ms-transform': 'rotate(' + angle + 'deg)',
+          'transform': 'rotate(' + angle + 'deg)'
+        });
+      },
+      stop: function (event, ui) {
+      }
     });
-  }
+  },
 };
