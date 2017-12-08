@@ -13,50 +13,71 @@
 <body>
   <header>
     <div class="flex-row">
-      <h1><a href="javascript:;" class="landing-link">Fridge Poetry</a></h1>
+      <div class="flex-column">
+        <h1>
+          <a href="javascript:;" class="landing-link">Fridge Poetry</a>
+        </h1>
+      </div>
     </div>
   </header>
   <main>
-    <section class="userinfo" hidden>
-      <h2 class="greeting">Hi</h2>
-      <input type="button" class="login" value="Log in">
-      <input type="button" class="logout" value="Log out">
-    </section>
+    <div class="flex-column log-links">
+      <a href="javascript:;" class="login" hidden>Log in</a>
+      <a href="javascript:;" class="logout" hidden>Log out</a>
+    </div>
+    <div class="flex-column" hidden>
+      <section class="userinfo">
+        <div class="flex-row">
+          <div class="flex-column">
+            <h2 class="greeting">Hi</h2>
+          </div>
+        </div>
+      </section>
+    </div>
     <div class="alert alert--save" hidden>Fridge saved!</div>
     <div class="alert alert--delete" hidden>Fridge deleted!</div>
     <div class="alert alert--update" hidden>Fridge updated!</div>
     <div class="alert alert--register" hidden>Sorry, couldn't register :(</div>
     <div class="alert alert--login" hidden>Sorry, couldn't log in :(</div>
     <div class="alert alert--unauthorized" hidden>You need to log in to do that!</div>
-    <section class="landing">
-      <h2>Welcome to Fridge Poetry!</h2>
-      <p>Fridge Poetry is a place for you to create poetry! On a fridge! On the internet!</p>
-      <p><a href="javascript:;" class="register-link">Register</a> or <a href="javascript:;" class="login-link">log in</a> to get started, you poet, you.</p>
-    </section>
     <div class="flex-row">
-      <form class="form form--register" hidden>
-        <legend>Register</legend>
-        <div class="flex-column">
-          <input type="text" class="form--register__username" placeholder="username" required>
-        </div>
-        <div class="flex-column">
-          <input type="password" class="form--register__password" placeholder="password" required>
-        </div>
-        <input type="submit" class="form--register__submit" value="Register">
-      </form>
+      <div class="flex-column">
+        <section class="landing">
+          <h2>Welcome to Fridge Poetry!</h2>
+          <p>Fridge Poetry is a place for you to create poetry! On a fridge! On the internet!</p>
+          <p>
+            <a href="javascript:;" class="register-link">Register</a> or
+            <a href="javascript:;" class="login-link">log in</a> to get started, you poet, you.</p>
+        </section>
+      </div>
     </div>
-    
     <div class="flex-row">
-      <form class="form form--login" hidden>
-        <legend>Login</legend>
-        <div class="flex-column">
-          <input type="text" class="form--login__username" placeholder="username" required>
-        </div>
-        <div class="flex-column">
-          <input type="password" class="form--login__password" placeholder="password" required>
-        </div>
-        <input type="submit" class="form--login__submit" value="Login">
-      </form>
+      <div class="flex-column">
+        <form class="form form--register" hidden>
+          <legend>Register</legend>
+          <div class="flex-column">
+            <input type="text" class="form--register__username" placeholder="username" required>
+          </div>
+          <div class="flex-column">
+            <input type="password" class="form--register__password" placeholder="password" required>
+          </div>
+          <input type="submit" class="form--register__submit" value="Register">
+        </form>
+      </div>
+    </div>
+    <div class="flex-row">
+      <div class="flex-column">
+        <form class="form form--login" hidden>
+          <legend>Login</legend>
+          <div class="flex-column">
+            <input type="text" class="form--login__username" placeholder="username" required>
+          </div>
+          <div class="flex-column">
+            <input type="password" class="form--login__password" placeholder="password" required> 
+          </div>
+          <input type="submit" class="form--login__submit" value="Login"> 
+        </form>
+      </div>
     </div>
     <div class="flex-row">
       <div class="flex-column">
@@ -71,14 +92,13 @@
       </div>
     </div>
     <div class="flex-row">
-      <div class="buttons" hidden>
-        <div class="flex-column">
+      <div class="flex-column" hidden>
+        <div class="buttons">
           <input type="button" class="fridge__button fridge__button--new" value="View different fridge">
           <input type="button" class="fridge__button fridge__button--update" value="Update this fridge" hidden>
           <input type="button" class="fridge__button fridge__button--save" value="Save this fridge" hidden>
           <input type="button" class="fridge__button fridge__button--create" value="Create blank fridge">
-          <input type="button" class="fridge__button fridge__button--delete" value="Delete this fridge">
-        </div>
+          <input type="button" class="fridge__button fridge__button--delete" value="Delete this fridge"> </div>
       </div>
     </div>
     

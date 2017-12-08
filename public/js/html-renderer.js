@@ -105,24 +105,32 @@ const HTMLRenderer = {
       twitterLink += `${item}%20`;
     });
     console.log(twitterLink);
-    $(".fridge").prepend(`<div class="flex-row">${twitterLink}%22%20a%20%23fridgePoem%20created%20on%20@FridgePoetryApp">Tweet this fridge!</a></div>`);
+    $(".fridge").prepend(`<div class="flex-row"><div class="flex-column">${twitterLink}%22%20a%20%23fridgePoem%20created%20on%20@FridgePoetryApp">Tweet this fridge!</a></div></div>`);
     // $("main").append("hello world");
   },
 
   displayUserInfo(username) {
-    $(".userinfo").prop("hidden", false);
+    $(".userinfo").parents(".flex-column").prop("hidden", false);
     $(".greeting").html(`Hi, ${username}!`);
   },
 
   hideUserInfo() {
-    $(".userinfo").prop("hidden", true);
+    $(".userinfo").parents(".flex-column").prop("hidden", true);
   },
 
   hideElement(element) {
-    $(element).prop("hidden", true);
+    $(element).parents(".flex-column").prop("hidden", true);
   },
 
   showElement(element) {
-    $(element).prop("hidden", false);
+    $(element).parents(".flex-column").prop("hidden", false);
   },
+
+  hideSpecificElement(element) {
+    $(element).prop("hidden", true);
+  },
+
+  showSpecificElement(element) {
+    $(element).prop("hidden", false);
+  }
 };

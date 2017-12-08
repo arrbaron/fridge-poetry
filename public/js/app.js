@@ -1,5 +1,6 @@
 const App = {
   currentUser: "",
+  newLogin: true,
 
   registerUser: function(username, password) {
     $.ajax({
@@ -29,9 +30,15 @@ const App = {
         const {authToken} = result;
         App.currentUser = username;
         localStorage.setItem("token", authToken);
-        HTMLRenderer.showSection(".fridge");
-        HTMLRenderer.showElement(".buttons");
         HTMLRenderer.displayUserInfo(App.currentUser);
+        HTMLRenderer.showSpecificElement(".logout");
+        HTMLRenderer.hideSpecificElement(".form--login");
+        if (App.newLogin) {
+          App.getRandomFridgeFromAPI();
+          HTMLRenderer.showSection(".fridge");
+          HTMLRenderer.showElement(".buttons");
+          App.newLogin = false;
+        }
       })
       .fail(function () {
         console.error("couldn't log in");
@@ -155,7 +162,7 @@ const App = {
   },
 
   reset: function() {
-    this.getRandomFridgeFromAPI();
+    // this.getRandomFridgeFromAPI();
     EventListeners.startListeners();
   },
 
