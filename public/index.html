@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <title>fridge poetry</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="an app for writing fridge poetry with strangers">
+  <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Cabin" rel="stylesheet">
   <link href="css/grid.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 </head>
-
 <body>
-  <header>
+  <div class="alert alert--save" hidden>Fridge saved!</div>
+  <div class="alert alert--delete" hidden>Fridge deleted!</div>
+  <div class="alert alert--update" hidden>Fridge updated!</div>
+  <div class="alert alert--register" hidden>Sorry, couldn't register :(</div>
+  <div class="alert alert--login" hidden>Sorry, couldn't log in :(</div>
+  <div class="alert alert--unauthorized" hidden>You need to log in to do that!</div>
+  <header role="banner">
     <div class="flex-row">
       <div class="flex-column">
         <h1>
@@ -20,7 +25,7 @@
       </div>
     </div>
   </header>
-  <main>
+  <main role="main">
     <div class="flex-column log-links">
       <a href="javascript:;" class="login" hidden>Log in</a>
       <a href="javascript:;" class="logout" hidden>Log out</a>
@@ -34,12 +39,6 @@
         </div>
       </section>
     </div>
-    <div class="alert alert--save" hidden>Fridge saved!</div>
-    <div class="alert alert--delete" hidden>Fridge deleted!</div>
-    <div class="alert alert--update" hidden>Fridge updated!</div>
-    <div class="alert alert--register" hidden>Sorry, couldn't register :(</div>
-    <div class="alert alert--login" hidden>Sorry, couldn't log in :(</div>
-    <div class="alert alert--unauthorized" hidden>You need to log in to do that!</div>
     <div class="flex-row">
       <div class="flex-column">
         <section class="landing">
@@ -54,7 +53,6 @@
     <div class="flex-row">
       <div class="flex-column">
         <form class="form form--register" hidden>
-          <legend>Register</legend>
           <div class="flex-column">
             <input type="text" class="form--register__username" placeholder="username" required>
           </div>
@@ -68,7 +66,6 @@
     <div class="flex-row">
       <div class="flex-column">
         <form class="form form--login" hidden>
-          <legend>Login</legend>
           <div class="flex-column">
             <input type="text" class="form--login__username" placeholder="username" required>
           </div>
@@ -101,7 +98,6 @@
           <input type="button" class="fridge__button fridge__button--delete" value="Delete this fridge"> </div>
       </div>
     </div>
-    
   </main>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
