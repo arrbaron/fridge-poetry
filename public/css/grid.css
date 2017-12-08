@@ -1,7 +1,7 @@
 .flex-row {
   max-width: 1440px;
   display: block;
-  margin: 40px auto;
+  margin: 10px auto;
   text-align: center;
 }
 
@@ -9,13 +9,17 @@
   width: 100%;
 }
 
-@media only screen and (min-wdith: 900px) {
+@media only screen and (min-width: 640px) {
   .flex-row {
     display: flex;
   }
 
   .flex-column {
     flex: 1;
+  }
+
+  .flex-triple {
+    flex: 3;
   }
 }
 

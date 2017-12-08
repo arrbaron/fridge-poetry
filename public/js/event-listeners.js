@@ -101,6 +101,9 @@ const EventListeners = {
     $("body").on("click", ".landing-link", function () {
       HTMLRenderer.showSection(".landing");
       HTMLRenderer.hideElement(".greeting");
+      HTMLRenderer.hideElement(".buttons");
+      HTMLRenderer.hideElement(".logout");
+      App.newLogin = true;
     });
   },
 
@@ -135,15 +138,15 @@ const EventListeners = {
 
   handleLogin: function() {
     $("body").on("click", ".login", function(event) {
-      HTMLRenderer.showElement(".form--login");
-      HTMLRenderer.hideElement(this);
+      HTMLRenderer.showSpecificElement(".form--login");
+      HTMLRenderer.hideSpecificElement(this);
     });
   },
 
   handleLogout: function() {
     $("body").on("click", ".logout", function (event) {
-      HTMLRenderer.showElement(".login");
-      HTMLRenderer.hideElement(this);
+      HTMLRenderer.showSpecificElement(".login");
+      HTMLRenderer.hideSpecificElement(this);
       HTMLRenderer.hideElement(".greeting");
       App.logoutUser();
     });

@@ -107,13 +107,38 @@ input[type="text"], input[type="password"] {
   font-size: 1.25em;
 }
 
+.word-bank, .poem {
+  text-align: left;
+}
+
+.hidden {
+  display: none;
+}
+
+.login, .logout {
+    position: absolute;
+    right: 0;
+    top: 100px;
+  }
+
 @media only screen and (min-width: 640px) {
   body {
     font-size: 1.5em;
   }
+
+  h1 {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
   
   .fridge {
-    width: 75%;
+    width: 50%;
+    height: 800px;
   }
 
   input[type="button"], input[type="submit"] {
@@ -122,5 +147,11 @@ input[type="text"], input[type="password"] {
 
   input[type="text"], input[type="password"] {
     width: 35%;
+  }
+
+  .login, .logout {
+    position: absolute;
+    right: 50px;
+    top: 10px;
   }
 }
