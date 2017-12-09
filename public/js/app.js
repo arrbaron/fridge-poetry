@@ -114,6 +114,7 @@ const App = {
       .done(function (result) {
         console.log(result);
         HTMLRenderer.showAlert(".alert--save");
+        // HTMLRenderer.displayFridge(result);
         return result;
       })
       .fail(function () {
@@ -136,6 +137,7 @@ const App = {
     })
       .done(function (result) {
         HTMLRenderer.showAlert(".alert--update");
+        HTMLRenderer.displayFridge(result);
         return result;
       })
       .fail(function () {
