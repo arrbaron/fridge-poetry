@@ -63,8 +63,12 @@ a {
 }
 
 .alert {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  width: 100%;
   height: 50px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   padding-top: 5px;
   border-radius: 5px;
   text-align: center;
