@@ -186,7 +186,14 @@ const EventListeners = {
           'transform': 'rotate(' + angle + 'deg)'
         });
       },
-      stop: function (event, ui) {
+      update: function (event, ui) {
+        let updatedPoem = [];
+        
+        $(".poem .word").each(function (index) {
+          updatedPoem.push(this.innerText);
+          
+        });
+        HTMLRenderer.displayTwitterButton(updatedPoem, true);
       }
     });
   },

@@ -20,14 +20,14 @@ const HTMLRenderer = {
       EventListeners.handleFridgeButtonDelete(fridge._id);
       this.displayPoem(fridge);
       this.displayAuthors(fridge.authors);
-      this.hideElement(".fridge__button--save");
-      this.showElement(".fridge__button--update");
+      this.hideSpecificElement(".fridge__button--save");
+      this.showSpecificElement(".fridge__button--update");
     }
     else {
       this.displayWordBank(App.getRandomWords(WORD_BANK, 3));
       this.displayPoem();
-      HTMLRenderer.hideElement(".fridge__button--update");
-      HTMLRenderer.showElement(".fridge__button--save");
+      HTMLRenderer.hideSpecificElement(".fridge__button--update");
+      HTMLRenderer.showSpecificElement(".fridge__button--save");
     }
     this.addRandomRotation();
   },
@@ -96,16 +96,26 @@ const HTMLRenderer = {
     setTimeout(function() {
       $(alert).prop("hidden", true)
     }, displayTime);
+
+    window.scrollTo(0, 0);
   },
 
-  displayTwitterButton: function(poem) {
+  displayTwitterButton: function(poem, isUpdated) {
     $(".twitter-share-button").closest(".flex-row").remove();
     let twitterLink = `<a class="twitter-share-button" href = "https://twitter.com/intent/tweet?text=%22`;
     // <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Share%20your%20fridge!"> Tweet</a>
-    poem.poem.forEach((item, index) => {
-      twitterLink += `${item}%20`;
-    });
-    console.log(twitterLink);
+    if (!isUpdated) {
+      poem.poem.forEach((item, index) => {
+        twitterLink += `${item}%20`;
+      });
+    }
+    else {
+      poem.forEach((item, index) => {
+        twitterLink += `${item}%20`;
+      });
+      isUpdated = false;
+    }
+
     $(".fridge").prepend(`<div class="flex-row"><div class="flex-column">${twitterLink}%22%20a%20%23fridgePoem%20created%20on%20@FridgePoetryApp">Tweet this fridge!</a></div></div>`);
     // $("main").append("hello world");
   },
@@ -128,11 +138,11 @@ const HTMLRenderer = {
   },
 
   hideSpecificElement(element) {
-    $(element).prop("hidden", true);
+    $(element).hide();
   },
 
   showSpecificElement(element) {
-    $(element).prop("hidden", false);
+    $(element).show();
   },
 
   addRandomRotation() {
