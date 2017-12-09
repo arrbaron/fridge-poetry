@@ -26,6 +26,7 @@ const HTMLRenderer = {
     else {
       this.displayWordBank(App.getRandomWords(WORD_BANK, 3));
       this.displayPoem();
+      this.displayAuthors([App.currentUser]);
       HTMLRenderer.hideSpecificElement(".fridge__button--update");
       HTMLRenderer.showSpecificElement(".fridge__button--save");
     }
@@ -62,12 +63,24 @@ const HTMLRenderer = {
 
   displayAuthors: function(authors) {
     console.log(authors);
+    let addedAuthors = [];
+    
     $(".fridge__info__authors").empty();
+    if (!authors) return;
+
     authors.forEach((item, index) => {
-      $(".fridge__info__authors").append(`
-      <span class="fridge__info__author">${item}, </span>
+      console.log(item);
+      if ($.inArray(item, addedAuthors) !== -1) {
+        console.log("item already in array");
+      }
+      else {
+        $(".fridge__info__authors").append(`
+        <span class="fridge__info__author">${item} </span>
       `);
+        addedAuthors.push(item);
+      }
     });
+    
   },
 
   clearFridge: function() {
