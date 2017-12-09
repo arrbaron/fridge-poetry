@@ -100,6 +100,18 @@ const HTMLRenderer = {
     window.scrollTo(0, 0);
   },
 
+  showError: function(error) {
+    console.log("show err0r");
+    const displayTime = 2000;
+
+    $(".error").text(error);
+
+    $(".error").prop("hidden", false);
+    setTimeout(function() {
+      $(".error").prop("hidden", true)
+    }, displayTime);
+  },
+
   displayTwitterButton: function(poem, isUpdated) {
     $(".twitter-share-button").closest(".flex-row").remove();
     let twitterLink = `<a class="twitter-share-button" href = "https://twitter.com/intent/tweet?text=%22`;
