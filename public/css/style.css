@@ -2,6 +2,12 @@
   box-sizing: border-box;
 }
 
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 body {
   font-size: 2em;
   /* font-family: 'Times New Roman', Times, serif; */
@@ -16,7 +22,7 @@ header, .landing, form {
 
 h1 {
   font-size: 1.25em;
-  font-family: 'Gloria Hallelujah', cursive;
+  /* font-family: 'Gloria Hallelujah', cursive; */
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -33,17 +39,26 @@ h2 {
 
 a {
   text-decoration: none;
-  color: #1D0A6B;
+  /* color: #1D0A6B; */
 }
 
 .userinfo {
   text-align: center;
   font-size: .75em;
+  display: block;
+}
+
+.login, .logout {
+  font-size: 0.8em;
+}
+
+.log-links {
+  text-align: center;
 }
 
 .fridge__info {
   text-align: center;
-  font-family: 'Gloria Hallelujah', cursive;
+  /* font-family: 'Gloria Hallelujah', cursive; */
   font-size: 0.75em;
 }
 
@@ -55,6 +70,7 @@ a {
   text-align: center;
   font-size: 1.25em;
   opacity: 0.5;
+  transition:all 0.3s ease;
 }
 
 .alert--save {
@@ -89,8 +105,6 @@ a {
   background-color: white;
   text-align: center;
   padding: 5px;
-  /* border: 1px solid black; */
-  /* border-bottom: 2px solid black; */
   box-shadow: 1px 3px 6px 0px #000000;
 }
 
@@ -129,8 +143,8 @@ a {
 }
 
 input[type="button"], input[type="submit"] {
-  width: 75%;
-  height: 50px;
+  /* width: 75%; */
+  /* height: 50px; */
   font-size: 0.75em;
 }
 
@@ -149,25 +163,43 @@ input[type="text"], input[type="password"] {
   display: none;
 }
 
-.login, .logout {
-    position: absolute;
-    right: 0;
-    top: 100px;
+input[type="button"], input[type="submit"], button {
+    /* background-color: lightgray; */
+    /* font-family: 'Gloria Hallelujah', cursive; */
+    /* border-radius: 5px; */
+    border: none;
+    /* font-size: 1.1em; */
+    /* font-size: 0.5em; */
 }
 
-  input[type="button"], input[type="submit"], button {
-    background-color: #FFFC63;
-    font-family: 'Gloria Hallelujah', cursive;
-    border-radius: 5px;
+.magnet {
+  font-family: 'Times New Roman', Times, serif;
+  margin-right: 10px;
+  margin-top: 10px;
+  background-color: white;
+  text-align: center;
+  padding: 5px;
+  box-shadow: 1px 3px 6px 0px #000000;
+  display: inline-block;
+}
+
+h1 .magnet:nth-child(1) {
+  transform: rotate(-3deg);
+}
+
+h1 .magnet:nth-child(2) {
+  transform: rotate(4deg);
 }
 
 input[type="text"], input[type="password"] {
     padding: 5px 10px 5px 10px;
     font-family: 'Cabin', sans-serif;
     word-wrap: break-word;
-    background-color: #FFFC63;
+    background-color: lightgray;
     border-radius: 5px;
   }
+
+/* LARGE SCREEN SIZES */
 
 @media only screen and (min-width: 640px) {
   body {
@@ -177,11 +209,24 @@ input[type="text"], input[type="password"] {
   h1 {
     margin-bottom: 0;
     margin-top: 0;
+    font-size: 1.5em;
   }
 
   h2 {
     margin-top: 0;
     margin-bottom: 0;
+  }
+
+  a {
+    transition:all 0.3s ease;
+  }
+
+  a:hover {
+    font-weight: bold;
+  }
+
+  .landing h2, form {
+    margin-top: 100px;
   }
   
   .fridge {
@@ -189,18 +234,30 @@ input[type="text"], input[type="password"] {
     height: 800px;
   }
 
+  .fridge__info {
+    font-size: 1.25em;
+  }
+  
+  .userinfo {
+    position: absolute;
+    right: 100px;
+    top: 0;
+  }
+
   .word {
     font-size: 1.5em;
   }
 
   input[type="button"], input[type="submit"] {
-    width: 20%;
-    height: 100px;
+    /* width: 10%; */
+    /* height: 0; */
     transition:all 0.3s ease;
+    font-size: 1.1em;
+    /* padding-bottom: 60px; */
   }
 
   input[type="button"]:hover, input[type="submit"]:hover {
-    background-color: #FFFA00;
+    background-color: rgb(245, 245, 245);
     transform: scale(1.1);
   }
 
@@ -214,13 +271,13 @@ input[type="text"], input[type="password"] {
   }
 
   input[type="text"]:focus, input[type="password"]:focus {
-    background-color: #FFFA00;
+    background-color: rgb(245, 245, 245);
     transform: scale(1.1);
   }
 
   .login, .logout {
     position: absolute;
-    right: 50px;
+    right: 10px;
     top: 10px;
   }
 }
