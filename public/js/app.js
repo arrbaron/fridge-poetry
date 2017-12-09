@@ -33,6 +33,10 @@ const App = {
         HTMLRenderer.displayUserInfo(App.currentUser);
         HTMLRenderer.showSpecificElement(".logout");
         HTMLRenderer.hideSpecificElement(".form--login");
+        HTMLRenderer.showElement(".greeting");
+        HTMLRenderer.displayUserInfo(App.currentUser);
+        HTMLRenderer.hideElement(".login");
+        HTMLRenderer.showElement(".logout");
         if (App.newLogin) {
           App.getRandomFridgeFromAPI();
           HTMLRenderer.showSection(".fridge");
@@ -42,7 +46,7 @@ const App = {
       })
       .fail(function () {
         console.error("couldn't log in");
-        HTMLRenderer.showAlert(".alert--login");
+        HTMLRenderer.showError("Incorrect username/password");
       });
   },
 

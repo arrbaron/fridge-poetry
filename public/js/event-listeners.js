@@ -97,6 +97,7 @@ const EventListeners = {
     });
     $("body").on("click", ".login-link", function () {
       HTMLRenderer.showSection(".form--login");
+      HTMLRenderer.showSpecificElement(".form--login");
     });
     $("body").on("click", ".landing-link", function () {
       HTMLRenderer.showSection(".landing");
@@ -108,11 +109,23 @@ const EventListeners = {
   },
 
   handleForms: function() {
+    const minLength = 5;
+    
     $(".form--register").on("submit", function (event) {
       event.preventDefault();
 
       let username = $(".form--register__username").val();
       let password = $(".form--register__password").val();
+
+      if (username.length < minLength) {
+        HTMLRenderer.showError(`Username must be at least ${minLength} characters long`);
+        return; 
+      }
+
+      if (password.length < minLength) {
+        HTMLRenderer.showError(`Password must be at least ${minLength} characters long`);
+        return;
+      }
       
       App.registerUser(username, password);
 
@@ -126,11 +139,7 @@ const EventListeners = {
       let password = $(".form--login__password").val();
 
       App.loginUser(username, password);
-      HTMLRenderer.hideElement(".login");
-      HTMLRenderer.showElement(".logout");
-      HTMLRenderer.showElement(".greeting");
-      HTMLRenderer.displayUserInfo(App.currentUser);
-
+      
       $(".form--register__username").val("");
       $(".form--register__password").val("");
     });
