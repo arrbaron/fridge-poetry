@@ -5,7 +5,7 @@ const App = {
   registerUser: function(username, password) {
     $.ajax({
       method: "POST",
-      url: "https://fridge-poetry.herokuapp.com/api/auth/register",
+      url: "https://nameless-plateau-59215.herokuapp.com/api/auth/register",
       contentType: "application/json",
       data: JSON.stringify({ username: username, password: password })
     })
@@ -22,7 +22,7 @@ const App = {
   loginUser: function(username, password) {
     $.ajax({
       method: "POST",
-      url: "https://fridge-poetry.herokuapp.com/api/auth/login",
+      url: "https://nameless-plateau-59215.herokuapp.com/api/auth/login",
       contentType: "application/json",
       data: JSON.stringify({ username: username, password: password })
     })
@@ -57,7 +57,7 @@ const App = {
   getRandomFridgeFromAPI: function() {
     $.ajax({
       method: "GET",
-      url: "https://fridge-poetry.herokuapp.com/fridges/random",
+      url: "https://nameless-plateau-59215.herokuapp.com/fridges/random",
       contentType: "application/json"
     })
       .done(function (result) {
@@ -73,7 +73,7 @@ const App = {
   getAllFridgesFromAPI: function() {
     $.ajax({
       method: "GET",
-      url: "https://fridge-poetry.herokuapp.com/fridges",
+      url: "https://nameless-plateau-59215.herokuapp.com/fridges",
       contentType: "application/json"
     })
       .done(function (result) {
@@ -87,7 +87,7 @@ const App = {
   getFridgeFromAPI: function(id) {
     $.ajax({
       method: "GET",
-      url: `https://fridge-poetry.herokuapp.com/fridges/${id}`,
+      url: `https://nameless-plateau-59215.herokuapp.com/fridges/${id}`,
       contentType: "application/json"
     })
       .done(function (result) {
@@ -103,7 +103,7 @@ const App = {
     
     $.ajax({
       method: "POST",
-      url: "https://fridge-poetry.herokuapp.com/fridges",
+      url: "https://nameless-plateau-59215.herokuapp.com/fridges",
       contentType: "application/json",
       data: JSON.stringify({ wordBank: wordBank, poem: poem, authors: author }),
       headers: {
@@ -127,7 +127,7 @@ const App = {
     console.log(id);
     $.ajax({
       method: "PUT",
-      url: `https://fridge-poetry.herokuapp.com/fridges/${id}`,
+      url: `https://nameless-plateau-59215.herokuapp.com/fridges/${id}`,
       contentType: "application/json",
       data: JSON.stringify({id: id, wordBank: wordBank, poem: poem, authors: author }),
       headers: {
@@ -150,7 +150,7 @@ const App = {
     console.log(id);
     $.ajax({
       method: "DELETE",
-      url: `https://fridge-poetry.herokuapp.com/fridges/${id}`,
+      url: `https://nameless-plateau-59215.herokuapp.com/fridges/${id}`,
       contentType: "application/json",
       headers: {
         'Content-Type': 'application/json',
