@@ -4,7 +4,7 @@
   "description": "a collaborative haiku writing tool",
   "main": "app.js",
   "scripts": {
-    "start": "server.js",
+    "start": "./server.js",
     "test": "mocha test/ */*.test.js"
   },
   "author": "Roy Baron",
