@@ -127,7 +127,7 @@ const HTMLRenderer = {
 
   displayTwitterButton: function(poem, isUpdated) {
     $(".twitter-share-button").closest(".flex-row").remove();
-    let twitterLink = `<a class="twitter-share-button" href = "https://twitter.com/intent/tweet?text=%22`;
+    let twitterLink = `<a class="twitter-share-button magnet" href = "https://twitter.com/intent/tweet?text=%22`;
     // <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Share%20your%20fridge!"> Tweet</a>
     if (!isUpdated) {
       poem.poem.forEach((item, index) => {
@@ -141,7 +141,7 @@ const HTMLRenderer = {
       isUpdated = false;
     }
 
-    $(".fridge").prepend(`<div class="flex-row"><div class="flex-column">${twitterLink}%22%20a%20%23fridgePoem%20created%20on%20@FridgePoetryApp">Tweet this fridge!</a></div></div>`);
+    $(".fridge").prepend(`<div class="flex-row"><div class="flex-column">${twitterLink}%22%20a%20%23fridgePoem%20created%20on%20@FridgePoetryApp"><img src="https://image.flaticon.com/icons/png/512/23/23931.png" class="twitter-icon"></a></div></div>`);
     // $("main").append("hello world");
   },
 

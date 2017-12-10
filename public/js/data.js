@@ -155,5 +155,18 @@ const WORD_BANK = {
     "ly",
     "s",
     "ed"
+  ],
+
+  phrases: [
+    "if I were",
+    "can I try",
+    "let's become",
+    "can we just",
+    "have you ever",
+    "what if I",
+    "I saw you",
+    "there's nothing like",
+    "please think",
+    "have you wondered"
   ]
 };

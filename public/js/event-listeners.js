@@ -12,6 +12,7 @@ const EventListeners = {
       this.handleLogout();
       this.handleLinks();
       this.handleForms();
+      this.handleCatClick();
       this.listenersStarted = true;
     }
   },
@@ -158,6 +159,13 @@ const EventListeners = {
       HTMLRenderer.hideSpecificElement(this);
       HTMLRenderer.hideElement(".greeting");
       App.logoutUser();
+    });
+  },
+
+  handleCatClick: function() {
+    $(".picture--cat").click(function(event) {
+      var audio = document.getElementById("audio");
+      audio.play();
     });
   },
 
