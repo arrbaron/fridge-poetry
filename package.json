@@ -1,7 +1,7 @@
 {
-  "name": "five-seven-five",
+  "name": "fridge-poetry",
   "version": "1.0.0",
-  "description": "a collaborative haiku writing tool",
+  "description": "a collaborative fridge poetry writing tool",
   "main": "app.js",
   "scripts": {
     "start": "./server.js",
