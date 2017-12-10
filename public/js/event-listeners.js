@@ -13,6 +13,7 @@ const EventListeners = {
       this.handleLinks();
       this.handleForms();
       this.handleCatClick();
+      this.handleDogClick();
       this.listenersStarted = true;
     }
   },
@@ -169,6 +170,13 @@ const EventListeners = {
     });
   },
 
+  handleDogClick: function () {
+    $(".picture--dog").click(function (event) {
+      var audio = document.getElementById("audio2");
+      audio.play();
+    });
+  },
+
   handleDragDrop: function() {
     $(".word-bank").sortable({
       connectWith: ".poem",
@@ -213,5 +221,12 @@ const EventListeners = {
         HTMLRenderer.displayTwitterButton(updatedPoem, true);
       }
     });
+
+    // $(".picture--cat").draggable({
+    //   containment: $(".fridge")
+    // });
+    // $(".picture--dog").draggable({
+    //   containment: $(".fridge")
+    // });
   },
 };

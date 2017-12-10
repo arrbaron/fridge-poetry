@@ -27,10 +27,8 @@
     </div>
   </header>
   <main role="main">
-    <div>
-      <img src="http://lorempixel.com/200/200/cats/" class="picture--cat magnet display: inline;" value="PLAY">
-    </div>
     <audio id="audio" src="./audio/cat-meow.wav"></audio>
+    <audio id="audio2" src="./audio/dog-bark.mp3"></audio>
     <div class="flex-column log-links">
       <a href="javascript:;" class="login" hidden>Log in</a>
       <a href="javascript:;" class="logout" hidden>Log out</a>
@@ -82,8 +80,14 @@
       </div>
     </div>
     <div class="flex-row">
-      <div class="flex-column">
+      <div class="flex-column relative">
         <div class="fridge" hidden>
+          <div>
+            <img src="http://lorempixel.com/200/200/cats/" class="picture--cat magnet display: inline;" value="PLAY">
+          </div>
+          <div>
+            <img src="https://loremflickr.com/200/200/dog" class="picture--dog magnet display: inline;" value="PLAY">
+          </div>
           <div class="fridge__info">
             <span>A poem from the heart(s) and mind(s) of: </span>
             <span class="fridge__info__authors"></span>

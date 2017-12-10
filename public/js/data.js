@@ -72,7 +72,6 @@ const WORD_BANK = {
     "blood",
     "blow",
     "boy",
-    "breast",
     "butt",
     "chant",
     "chocolate",
@@ -109,6 +108,9 @@ const WORD_BANK = {
   adjectives: [
     "happy",
     "beautiful",
+    "tiny",
+    "huge",
+    "questionable"
   ],
 
   pronouns: [

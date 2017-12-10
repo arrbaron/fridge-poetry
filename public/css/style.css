@@ -136,6 +136,11 @@ a {
   z-index: -1;
   box-shadow: 1px 3px 6px 0px #000000;
   border: 3px solid black;
+  /* position: relative; */
+}
+
+.relative {
+  position: relative;
 }
 
 .twitter-share-button {
@@ -209,8 +214,8 @@ input[type="text"], input[type="password"] {
 
   .picture--cat {
     position: absolute;
-    top: 30%;
-    left: 10%;
+    top: 0;
+    left: 5%;
     z-index: 1;
     width: 35px;
     height: 35px;
@@ -219,8 +224,16 @@ input[type="text"], input[type="password"] {
     /* border: 1px solid black; */
   }
 
-  .picture--cat:hover {
-    cursor: pointer;
+.picture--dog {
+    position: absolute;
+    top: 0;
+    right: 3%;
+    z-index: 1;
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    transform: rotate(4deg);
+    /* border: 1px solid black; */
   }
 
 .twitter-share-button {
@@ -235,6 +248,11 @@ input[type="text"], input[type="password"] {
   padding: 0;
   
 }
+
+form {
+    margin-top: 50px;
+  }
+
 
 /* LARGE SCREEN SIZES */
 
@@ -283,6 +301,18 @@ input[type="text"], input[type="password"] {
 
   .word {
     font-size: 1.5em;
+  }
+
+  .picture--cat {
+    left: 35%;
+  }
+
+  .picture--dog {
+    right: 35%;
+  }
+
+  .picture--cat:hover, .picture--dog:hover {
+    cursor: pointer;
   }
 
   input[type="button"], input[type="submit"] {
