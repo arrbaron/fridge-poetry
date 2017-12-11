@@ -10,11 +10,13 @@ together with strangers on the internet. If a poem is particularly impressive, a
 
 Technologies
 
+Frontend: 
 -HTML5/CSS
 -JavaScript
 -jQuery
 -jQuery UI
 
+Backend:
 -Node/Express
 -Mongo(ose)
 -Passport
