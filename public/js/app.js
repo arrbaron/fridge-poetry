@@ -10,11 +10,9 @@ const App = {
       data: JSON.stringify({ username: username, password: password })
     })
       .done(function (result) {
-        console.log(result);
         HTMLRenderer.showSection(".form--login");
       })
       .fail(function () {
-        console.log("couldn't register");
         HTMLRenderer.showAlert(".alert--register");
       });
   },
@@ -45,7 +43,6 @@ const App = {
         }
       })
       .fail(function () {
-        console.error("couldn't log in");
         HTMLRenderer.showError("Incorrect username/password");
       });
   },
@@ -104,7 +101,6 @@ const App = {
 
   updateFridgeInAPI: function (id, wordBank, poem, author) {
     const token = localStorage.getItem("token");
-    console.log(id);
     $.ajax({
       method: "PUT",
       url: `https://nameless-plateau-59215.herokuapp.com/fridges/${id}`,
@@ -127,7 +123,6 @@ const App = {
 
   deleteFridgeInAPI: function(id) {
     const token = localStorage.getItem("token");
-    console.log(id);
     $.ajax({
       method: "DELETE",
       url: `https://nameless-plateau-59215.herokuapp.com/fridges/${id}`,
