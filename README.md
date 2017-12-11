@@ -1,7 +1,7 @@
 # fridge-poetry
 a tool for collaborative fridge poetry
 
-![Fridge Poetry screenshot](fridge-poetry.png)
+![Fridge Poetry screenshot](fridge-poetry.PNG)
 
 Description
 
