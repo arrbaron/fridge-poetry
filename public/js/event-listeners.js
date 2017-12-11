@@ -20,8 +20,6 @@ const EventListeners = {
   
   handleFridgeButtonNew: function() {
     $("body").on("click", ".fridge__button--new", function(){
-      // HTMLRenderer.displayFridge(App.getRandomFridge());
-      // HTMLRenderer.displayFridge(App.getRandomFridgeFromAPI());
       App.getRandomFridgeFromAPI();
     });
   },
@@ -65,7 +63,6 @@ const EventListeners = {
   },
 
   handleFridgeButtonUpdate: function(id) {
-    console.log(id);
     $(".fridge__button--update").off();
     $(".fridge__button--update").on("click", function () {
       let sortedPoem = $.makeArray($(".fridge .poem .word"));
@@ -88,7 +85,6 @@ const EventListeners = {
   handleFridgeButtonDelete: function(id) {
     $(".fridge__button--delete").off();
     $(".fridge__button--delete").on("click", function () {
-      console.log(id);
       App.deleteFridgeInAPI(id);
     });
   },
@@ -182,7 +178,6 @@ const EventListeners = {
       connectWith: ".poem",
       items: ".word",
       start: function(event, ui) {
-        console.log($(ui.item));
         const maxAngle = 10;
         let angle = Math.floor(Math.random() * maxAngle) - (maxAngle / 2);
         $(ui.item).css({
@@ -201,7 +196,6 @@ const EventListeners = {
       items: ".word",
       start: function (event, ui) {
         console.log($(ui.item));
-        // $(ui.item).addClass("dragging");
         const maxAngle = 10;
         let angle = Math.floor(Math.random() * maxAngle) - (maxAngle / 2);
         $(ui.item).css({
@@ -221,12 +215,5 @@ const EventListeners = {
         HTMLRenderer.displayTwitterButton(updatedPoem, true);
       }
     });
-
-    // $(".picture--cat").draggable({
-    //   containment: $(".fridge")
-    // });
-    // $(".picture--dog").draggable({
-    //   containment: $(".fridge")
-    // });
   },
 };
