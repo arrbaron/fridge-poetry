@@ -127,7 +127,7 @@ const HTMLRenderer = {
 
   displayTwitterButton: function(poem, isUpdated) {
     $(".twitter-share-button").closest(".flex-row").remove();
-    let twitterLink = `<a class="twitter-share-button magnet" href = "https://twitter.com/intent/tweet?text=%22`;
+    let twitterLink = `<a class="twitter-share-button magnet" target="_blank" href = "https://twitter.com/intent/tweet?text=%22`;
     // <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Share%20your%20fridge!"> Tweet</a>
     if (!isUpdated) {
       poem.poem.forEach((item, index) => {
