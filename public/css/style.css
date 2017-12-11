@@ -177,12 +177,7 @@ input[type="text"], input[type="password"] {
 }
 
 input[type="button"], input[type="submit"], button {
-    /* background-color: lightgray; */
-    /* font-family: 'Gloria Hallelujah', cursive; */
-    /* border-radius: 5px; */
     border: none;
-    /* font-size: 1.1em; */
-    /* font-size: 0.5em; */
 }
 
 .magnet {
@@ -221,7 +216,6 @@ input[type="text"], input[type="password"] {
     height: 35px;
     padding: 0;
     transform: rotate(-6deg);
-    /* border: 1px solid black; */
   }
 
 .picture--dog {
@@ -233,7 +227,6 @@ input[type="text"], input[type="password"] {
     height: 35px;
     padding: 0;
     transform: rotate(4deg);
-    /* border: 1px solid black; */
   }
 
 .twitter-share-button {
