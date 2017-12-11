@@ -4,7 +4,7 @@
   "description": "a collaborative fridge poetry writing tool",
   "main": "app.js",
   "scripts": {
-    "start": "./server.js",
+    "start": "node ./server.js",
     "test": "mocha test/ */*.test.js"
   },
   "author": "Roy Baron",
