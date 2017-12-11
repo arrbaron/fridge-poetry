@@ -62,16 +62,14 @@ const HTMLRenderer = {
   },
 
   displayAuthors: function(authors) {
-    console.log(authors);
     let addedAuthors = [];
     
     $(".fridge__info__authors").empty();
     if (!authors) return;
 
     authors.forEach((item, index) => {
-      console.log(item);
       if ($.inArray(item, addedAuthors) !== -1) {
-        console.log("item already in array");
+        // item already in array
       }
       else {
         $(".fridge__info__authors").append(`
@@ -114,7 +112,6 @@ const HTMLRenderer = {
   },
 
   showError: function(error) {
-    console.log("show err0r");
     const displayTime = 2000;
 
     $(".error").text(error);
@@ -128,7 +125,6 @@ const HTMLRenderer = {
   displayTwitterButton: function(poem, isUpdated) {
     $(".twitter-share-button").closest(".flex-row").remove();
     let twitterLink = `<a class="twitter-share-button magnet" target="_blank" href = "https://twitter.com/intent/tweet?text=%22`;
-    // <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Share%20your%20fridge!"> Tweet</a>
     if (!isUpdated) {
       poem.poem.forEach((item, index) => {
         twitterLink += `${item}%20`;
@@ -142,7 +138,6 @@ const HTMLRenderer = {
     }
 
     $(".fridge").prepend(`<div class="flex-row"><div class="flex-column">${twitterLink}%22%20a%20%23fridgePoem%20created%20on%20@FridgePoetryApp"><img src="https://image.flaticon.com/icons/png/512/23/23931.png" class="twitter-icon"></a></div></div>`);
-    // $("main").append("hello world");
   },
 
   displayUserInfo(username) {

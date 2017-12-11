@@ -61,26 +61,9 @@ const App = {
       contentType: "application/json"
     })
       .done(function (result) {
-        console.log(result);
         HTMLRenderer.displayFridge(result);
-        // return result;
       })
       .fail(function () {
-        // HTMLRenderer.showErr();
-      });
-  },
-
-  getAllFridgesFromAPI: function() {
-    $.ajax({
-      method: "GET",
-      url: "https://nameless-plateau-59215.herokuapp.com/fridges",
-      contentType: "application/json"
-    })
-      .done(function (result) {
-        
-      })
-      .fail(function () {
-        // HTMLRenderer.showErr();
       });
   },
 
@@ -94,7 +77,6 @@ const App = {
         HTMLRenderer.displayFridge(result);
       })
       .fail(function () {
-        // HTMLRenderer.showErr();
       });
   },
 
@@ -112,9 +94,7 @@ const App = {
       }
     })
       .done(function (result) {
-        console.log(result);
         HTMLRenderer.showAlert(".alert--save");
-        // HTMLRenderer.displayFridge(result);
         return result;
       })
       .fail(function () {
@@ -168,7 +148,6 @@ const App = {
   },
 
   reset: function() {
-    // this.getRandomFridgeFromAPI();
     EventListeners.startListeners();
   },
 
